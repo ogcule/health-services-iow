@@ -5,9 +5,9 @@ import { check, validationResult } from 'express-validator/check';
 import { matchedData, sanitize } from 'express-validator/filter';
 
 const routes = (app) => {
-  app.get('/service', getAllServices);
-  app.get('/service/:id', getSingleService);
-  app.post('/service',[
+  app.get('/api/service', getAllServices);
+  app.get('/api/service/:id', getSingleService);
+  app.post('/api/service',[
     check('name', 'Please enter a name for the service').isLength({ min: 1 }),
     check('description','Please enter a description').isLength({ min: 1 }),
     check('address', 'Please enter an address').isLength({ min: 1 }),
@@ -23,12 +23,12 @@ const routes = (app) => {
   }
   next();
 }, createService);
-  app.put('/service/:id', updateService);
-  app.delete('/service/:name', removeService);
+  app.put('/api/service/:id', updateService);
+  app.delete('/api/service/:name', removeService);
 
-  app.get('/faq', getAllFaq);
-  app.get('/faq/:id', getFaq);
-  app.post('/faq',[
+  app.get('/api/faq', getAllFaq);
+  app.get('/api/faq/:id', getFaq);
+  app.post('/api/faq',[
     check('question', 'Please enter a question').isLength({ min: 1 }),
     check('answer','Please enter an answer').isLength({ min: 1 })
   ],(req, res, next) => {
@@ -38,8 +38,8 @@ const routes = (app) => {
   }
   next();
 }, createFaq);
-  app.put('/faq/:id', updateFaq);
-  app.delete('/faq/:id', removeFaq);
+  app.put('/api/faq/:id', updateFaq);
+  app.delete('/api/faq/:id', removeFaq);
 }
 
 export default routes;

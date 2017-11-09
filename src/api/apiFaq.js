@@ -5,7 +5,7 @@ export default {
   requestPost(question, answer) {
     return axios({
       method: 'post',
-      url: 'http://localhost:3000/faq',
+      url: 'http://localhost:3000/api/faq',
       data: querystring.stringify({
         question, // property shorthand
         answer, // property shorthand
@@ -22,7 +22,7 @@ export default {
       });
   },
   requestGet() {
-    return axios.get('http://localhost:3000/faq')
+    return axios.get('http://localhost:3000/api/faq')
       .then(response => response.data)
       .catch(error => console.log(error));
   },

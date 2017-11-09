@@ -1,0 +1,82 @@
+@import "../../styles/colors";
+@import "../../styles/buttons";
+@import "../../styles/fonts";
+@import "../../styles/container";
+.faqBox{
+  @extend .outerBox;
+}
+.formContainerFaq {
+  @extend .formContainer;
+form {
+  flex: 1 1 auto;
+  background-color: $white;
+  border-radius: 5px;
+  padding: 5px;
+}
+legend {
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: 400;
+}
+}
+li.message {
+  color: darken($brown, 20%);
+  background-color: lighten($brown, 30%);
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.formRow {
+  display: flex;
+  margin: 1em;
+  label {
+    flex: 1;
+    display: flex;
+    flex-flow: column;
+    padding-bottom: 5px;
+    font-size: 1.2em;
+  }
+  input,textarea {
+    display: block;
+    flex: 1;
+    font-size: 1em;
+    padding: 5px;
+  }
+  }
+ul{
+  margin: 0;
+  padding: 0;
+}
+.liHeading{
+  font-weight: bold;
+  font-size: 1.3em;
+  hr {
+    height: 1px;
+    color: $base;
+    background: $base;
+    font-size: 0;
+    border: 0;
+  }
+}
+.liAnswer {
+  color: black;
+  font-size: 1.1em
+}
+.questions{
+  flex: 1 1 auto;
+  min-width: 80%;
+  border: $base solid 2px;
+  border-radius: 5px;
+  background-color: lighten($base, 40%);
+  padding: 10px;
+  color: darken($base, 10%);
+  overflow: auto;
+  ul{
+    margin-bottom: 5px;
+    background-color: $white;
+    border-radius: 5px;
+  }
+  li{
+    padding: 5px;
+    list-style-type: none;
+  }
+}

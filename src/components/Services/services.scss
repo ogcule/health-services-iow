@@ -1,0 +1,93 @@
+@import "../../styles/colors";
+@import "../../styles/buttons";
+@import "../../styles/fonts";
+@import "../../styles/container";
+
+.servicesBox {
+  @extend .outerBox;
+}
+p.required, span.required {
+  margin: 0;
+  padding: 0;
+  color: red;
+  text-align: right;
+}
+.formContainerServices {
+  @extend .formContainer;
+form{
+    flex: 1 0 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    background-color: $white;
+    align-items: flex-end;
+    border-radius: 5px;
+    padding: 5px;
+  label{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0.2rem 0;
+  }
+  legend {
+    align-self: center;
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  input, textarea, select, label {
+    font-size: 1.0em;
+  }
+  input, textarea, select {
+    width: 50%;
+    margin-left: 1rem;
+  }
+}
+}
+hr {
+  height: 1px;
+  color: $base;
+  background: $base;
+  font-size: 0;
+  border: 0;
+  margin: 5px 0;
+}
+ul {
+  list-style-type: none;
+}
+table {
+  flex: 1 1 auto;
+  border-collapse: collapse;
+  max-width: 80%;
+  color: black;
+}
+thead{
+  background-color: lighten($base, 40%);
+  color: darken($base, 10%);
+}
+th, td {
+  padding: 0.25rem;
+  text-align: left;
+  border: 1px solid $base;
+}
+.services{
+li {
+  padding: 0.25rem;
+  span{
+    display: block;
+    color: $base;
+    font-weight:600;
+  }
+}
+a {
+  text-decoration: none;
+  &:link {
+    color: $base;
+  }
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+}

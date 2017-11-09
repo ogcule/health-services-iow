@@ -1,0 +1,32 @@
+@mixin reset-button ($text, $bg: transparent)  {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: $bg;
+  font-family: inherit;
+  font-size: $text;
+  cursor: pointer;
+}
+@mixin button ($text, $bg: transparent, $border-bg: black) {
+  margin: 0;
+  padding: 0 5px;
+  border: $border-bg 2px;
+  border-style: solid;
+  border-radius: 5px;
+  background: $bg;
+  font-family: inherit;
+  font-size: $text;
+  cursor: pointer;
+}
+.formBtn{
+  padding: 0.5em 1em 0 0;
+  button {
+  float: right;
+  font-size: 1em;
+  color: $white;
+  background-color: $brown;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+}

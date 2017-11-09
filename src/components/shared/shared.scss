@@ -1,0 +1,47 @@
+@import "../../styles/colors";
+@import "../../styles/fonts";
+@import "../../styles/buttons";
+.subtitle {
+  font-family: $heading;
+  font-size: 2.2em;
+  text-align: center;
+  margin: 0;
+  flex:0 1 auto;
+}
+.add{
+  width: 80%;
+  text-align: right;
+  p{
+  margin: 0;
+  padding: 0.2rem;
+}
+  button{
+    @include button(1em, lighten($brown, 40%), $brown);
+}
+}
+.closebtn {
+  flex: 0 1 auto;
+  display: flex;
+  justify-content: flex-end;
+  button {
+  @include reset-button(1.5em);
+}
+}
+.notFound{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  color: red;
+}
+.errorText {
+  color: red;
+  padding: 0;
+  margin: 0;
+}
+.successMsg{
+  padding: 5px;
+  background-color: $yellow;
+  color: $white;
+  border-radius: 5px;
+}

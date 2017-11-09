@@ -1,0 +1,29 @@
+@import "../../styles/colors";
+.nav {
+  flex: 1 1 30%;
+  align-self: flex-end;
+  ul{
+    display: flex;
+    flex-flow: row, nowrap;
+    justify-content: space-around;
+    margin: 0;
+    font-size: 1.2 em;
+  }
+  a{
+    text-decoration: none;
+    color: $white;
+    padding: 7px;
+    border-radius: 5px 5px 0 0;
+  }
+  li {
+    list-style-type: none;
+    margin-bottom: 5px;
+  }
+
+}
+.selected{
+  color: $base !important;
+  font-weight: bolder;
+  background-color: $white;
+
+}

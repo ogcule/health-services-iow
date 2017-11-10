@@ -5,17 +5,15 @@
   "author": "Oliver Cule <ogcule@outlook.com>",
   "license": "MIT",
   "scripts": {
-    "build:server": "webpack --config webpack.server.prod.js",
-    "build:client": "webpack --config webpack.prod.js",
     "build": "npm-run-all  build:client build:server",
     "server:watch": "webpack --watch --config webpack.server.dev.js",
     "build:devserver": "webpack --watch --config webpack.server.dev.js",
     "start:devserver": "nodemon ./dist/server.bundle.js --exec babel-node",
     "build:devclient": "webpack --config webpack.dev.js",
-    "start:devclient": "webpack-dev-server --config webpack.dev.js",
+    "client": "webpack-dev-server --config webpack.dev.js",
     "start": "node ./dist/server.bundle.js",
-    "postbuild": "webpack -p --config ./webpack.prod.js --progress",
-    "postbuild:server": "webpack -p --config ./webpack.server.prod.js --progress"
+    "build:server": "webpack -p --config ./webpack.prod.js --progress",
+    "build:client": "webpack -p --config ./webpack.server.prod.js --progress"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",

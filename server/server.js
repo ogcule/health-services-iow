@@ -45,6 +45,6 @@ app.use((err, req, res, next) => {
 routes(app);
 
 
-app.listen(port, () => {
-  console.log('express server listening on port ', port);
+app.listen(process.env.PORT, () => {
+  console.log('express server listening on port ', process.env.PORT);
 });

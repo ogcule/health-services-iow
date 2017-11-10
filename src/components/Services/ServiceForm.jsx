@@ -55,7 +55,7 @@ const ServiceForm = props => (
       {props.errorMsg.telephone && <ErrorMsg msg={props.errorMsg.telephone} />}
       <label htmlFor="email">
         E-mail:
-        <input id="email" type="email" name="email" value={props.values.email} placeholder="user@mydomain.com" onChange={props.handleInputChange} />
+        <input id="email" type="email" name="email" value={props.values.email} placeholder="service@domain.com" onChange={props.handleInputChange} />
       </label>
       {props.errorMsg.email && <ErrorMsg msg={props.errorMsg.email} />}
       <label htmlFor="weblink">

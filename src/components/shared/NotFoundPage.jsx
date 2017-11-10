@@ -6,10 +6,12 @@ import styles from './shared.scss';
 const NotFoundPage = ({ location }) => (
   <div className={styles.notFound}>
     <h1>404</h1>
-    <h2>.. Can not find page</h2>
-    <code>
-      {location.pathname}
-    </code>!
+    <h2>.. Can not find page
+      <code>
+        {location.pathname}
+      </code>
+      !
+    </h2>
     <p>
       <Link to="/">Go back to main page</Link>
     </p>

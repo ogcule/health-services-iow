@@ -6,13 +6,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/index.jsx',
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: true,
-    hot: true,
-    historyApiFallback: true
-  },
   resolve: {
     extensions: ['.js', '.jsx']
   },
@@ -21,10 +14,10 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
-        loader: ['babel-loader','eslint-loader']
+        loader: ['babel-loader']
 
         },
-        {
+         {
           test: /\.(scss)$/,
           use: ExtractTextPlugin.extract({
             fallback: "style-loader",
@@ -75,7 +68,7 @@ module.exports = {
       new webpack.HotModuleReplacementPlugin()
     ],
   output: {
-    filename: '[name].bundle.js',
+    filename: 'client.bundle.js',
     path: path.resolve(__dirname,'dist')
   }
 }

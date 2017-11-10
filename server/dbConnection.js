@@ -1,5 +1,4 @@
 import promise from 'bluebird';
-
 //pg-promises connection
 const initOptions = {
   // Initialization Options

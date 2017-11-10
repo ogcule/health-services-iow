@@ -5,10 +5,17 @@
   "author": "Oliver Cule <ogcule@outlook.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
-    "build:watch": "webpack --watch",
-    "build:dev": "nodemon ./server/server.js --exec babel-node",
-    "start": "npm-run-all --parallel build:*"
+    "build:server": "webpack --config webpack.server.prod.js",
+    "build:client": "webpack --config webpack.prod.js",
+    "build": "npm-run-all  build:client build:server",
+    "server:watch": "webpack --watch --config webpack.server.dev.js",
+    "build:devserver": "webpack --watch --config webpack.server.dev.js",
+    "start:devserver": "nodemon ./dist/server.bundle.js --exec babel-node",
+    "build:devclient": "webpack --config webpack.dev.js",
+    "start:devclient": "webpack-dev-server --config webpack.dev.js",
+    "start": "node ./dist/server.bundle.js",
+    "heroku-postbuild": "webpack -p --config ./webpack.prod.js --progress",
+    "heroku-postbuild:server": "webpack -p --config ./webpack.server.prod.js --progress"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
@@ -34,14 +41,18 @@
     "postcss-loader": "^2.0.8",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
+    "uglifyjs-webpack-plugin": "^1.0.1",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1",
+    "webpack-merge": "^4.1.1",
+    "webpack-node-externals": "^1.6.0",
     "yarn-run-all": "^3.1.1"
   },
   "dependencies": {
     "axios": "^0.16.2",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
+    "express": "^4.16.2",
     "express-validator": "^4.3.0",
     "pg-promise": "^7.3.1",
     "prop-types": "^15.6.0",

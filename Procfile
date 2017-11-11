@@ -1,1 +1,1 @@
-web: node oldserver/oldserver-compiled.js
+web: node oldserver/server-compiled.js

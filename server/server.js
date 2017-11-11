@@ -5,7 +5,6 @@ import expressValidator from 'express-validator';
 import routes from './routes';
 
 const app = express();
-const port = process.env.PORT || 3000;
 
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');
@@ -45,6 +44,6 @@ app.use((err, req, res, next) => {
 routes(app);
 
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('express server listening on port ', process.env.PORT);
 });

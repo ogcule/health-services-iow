@@ -1,1 +1,1 @@
-web: node ./dist/server.bundle.js -p $PORT
+web: node NODE_ENV=production ./dist/server.bundle.js

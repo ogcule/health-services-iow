@@ -2,7 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
 import expressValidator from 'express-validator';
-// import routes from './routes';
+import routes from './routes';
 
 const app = express();
 const PORT = process.env.PORT || 3000;

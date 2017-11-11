@@ -1,3 +1,4 @@
+import "babel-polyfill";
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
@@ -46,5 +47,5 @@ routes(app);
 
 
 app.listen(PORT, () => {
-  console.log('express server listening on port ', app.get('port'));
+  console.log('express server listening on port ', PORT);
 });

@@ -18,5 +18,4 @@ CREATE TABLE service (
 );
 
 INSERT INTO service (image, name, address, telephone, email, category, description, link, rcgp, postcode)
-  VALUES ( '', '','','','','','','','','');
-  
+  VALUES ( 'not available', 'not available','not available','111','not available','not available','not available','not available','not available','postcode');

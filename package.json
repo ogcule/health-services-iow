@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack -p --config ./webpack.prod.js --progress",
+    "lint:server":"eslint ./server/*.js*",
     "compile:server": "babel ./server -d ./lib"
   },
   "devDependencies": {

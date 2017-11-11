@@ -22,7 +22,7 @@ export default {
       });
   },
   requestGet() {
-    return axios.get('http://localhost:3000/api/faq')
+    return axios.get('/api/faq')
       .then(response => response.data)
       .catch(error => console.log(error));
   },

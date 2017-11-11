@@ -1,4 +1,3 @@
-import http from 'http';
 import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
@@ -6,7 +5,7 @@ import expressValidator from 'express-validator';
 import routes from './routes';
 
 const app = express();
-app.set('port', process.env.PORT || 3000);
+const PORT = process.env.PORT || 3000;
 
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');
@@ -46,6 +45,6 @@ app.use((err, req, res, next) => {
 routes(app);
 
 
-http.createServer(app).listen(app.get('port'), () => {
+app.listen(PORT, () => {
   console.log('express server listening on port ', app.get('port'));
 });

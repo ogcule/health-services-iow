@@ -1,1 +1,1 @@
-web: node NODE_ENV=production ./dist/server.bundle.js
+web: node ./dist/server.bundle.js

@@ -3,7 +3,7 @@ import querystring from 'querystring';
 
 export default {
   requestGetAll() {
-    return axios.get('http://localhost:3000/api/service/')
+    return axios.get('/api/service/')
       .then(response => response.data)
       .catch(error => console.log(error));
   },
@@ -21,7 +21,7 @@ export default {
   ) {
     return axios({
       method: 'post',
-      url: 'http://localhost:3000/api/service/',
+      url: '/api/service/',
       data: querystring.stringify({
         name,
         category,

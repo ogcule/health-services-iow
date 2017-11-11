@@ -5,7 +5,7 @@ export default {
   requestPost(question, answer) {
     return axios({
       method: 'post',
-      url: 'http://localhost:3000/api/faq',
+      url: '/api/faq',
       data: querystring.stringify({
         question, // property shorthand
         answer, // property shorthand

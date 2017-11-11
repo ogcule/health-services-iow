@@ -5,16 +5,7 @@
   "author": "Oliver Cule <ogcule@outlook.com>",
   "license": "MIT",
   "scripts": {
-    "build": "npm-run-all  build:client build:server",
-    "server:watch": "webpack --watch --config webpack.server.dev.js",
-    "build:devserver": "webpack --watch --config webpack.server.dev.js",
-    "start:devserver": "nodemon ./dist/server.bundle.js --exec babel-node",
-    "build:devclient": "webpack --config webpack.dev.js",
-    "client": "webpack-dev-server --config webpack.dev.js",
-    "start": "node ./dist/server.bundle.js",
-    "build:server": "webpack -p --config ./webpack.prod.js --progress",
-    "build:client": "webpack -p --config ./webpack.server.prod.js --progress",
-    "babel": "npx babel ./oldserver/server.js --out-file ./oldserver/server-compiled.js",
+    "build": "webpack -p --config ./webpack.prod.js --progress",
     "compile:server": "babel ./server -d ./lib"
   },
   "devDependencies": {

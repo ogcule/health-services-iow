@@ -13,7 +13,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var app = (0, _express2.default)();
 var PORT = process.env.PORT || 3000;
 
-app.use(_express2.default.static(_path2.default.join(__dirname, 'dist')));
+app.use(_express2.default.static(_path2.default.join(__dirname, '..', 'dist')));
 
 app.get('/', function (request, response) {
   response.sendFile(__dirname + '/dist/index.html');

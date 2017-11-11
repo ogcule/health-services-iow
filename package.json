@@ -14,7 +14,7 @@
     "start": "node ./dist/server.bundle.js",
     "build:server": "webpack -p --config ./webpack.prod.js --progress",
     "build:client": "webpack -p --config ./webpack.server.prod.js --progress",
-    "babel": "npx babel ./server/server.js --out-file ./server/server-compiled.js"
+    "babel": "npx babel ./oldserver/server.js --out-file ./oldserver/server-compiled.js"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",

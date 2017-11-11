@@ -42,7 +42,7 @@ app.use((err, req, res, next) => {
   next();
 });
 
-routes(app);
+// routes(app);
 
 
 app.listen(PORT, () => {

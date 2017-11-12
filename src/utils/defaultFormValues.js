@@ -16,7 +16,8 @@ export default function defaultFormValues(values) {
     { postcode: values.postcode },
   ];
   const formValues = formValuesMap.map((key) => {
-    if (!formValuesMap[Object.keys(key)[0]]) {
+    console.log(key[Object.keys(key)[0]]);
+    if (!key[Object.keys(key)[0]]) {
       switch (Object.keys(key)[0]) {
         case 'name':
           return '';
@@ -34,7 +35,7 @@ export default function defaultFormValues(values) {
           return 'not available';
       }
     }
-    return formValuesMap[Object.keys(key)[0]];
+    return key[Object.keys(key)[0]];
   });
   return formValues;
 }

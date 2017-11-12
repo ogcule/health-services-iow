@@ -43,3 +43,6 @@ need some setting for development vs production. Look at webpack-dev-server , ho
 - responsive, look at hamburger and toggle navigation on smaller screens.
 - rest of the work on filters, display categories, etc
 - remember to comment
+- struggled to get responsive image maintaining aspect for home page, I think have done it but need to check ok on iphone 6 setting. 
+- After I made a development environment with middlware for webpack-dev-server and hot module this worked for use locally as well as with heruko local. Did not work on deploy as only uses dependencies and not dev dependencies. so crashed at server.js as no module to import for the webpack-hot-middleware or webpack-dev-middleware. Will need to work out how to not use these in development.
+- when I had deployed before above crash for some reason was not able to submit to the heroku postgres database. error message about function.keys could use undefined or null as object.

@@ -35,6 +35,8 @@ entry: ['webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr&
 **Not got changes to scss files to cause reload though!**
 
 I had a problem with getting browser to reload when I altered a component. Solution was that I had not added `&reload=true`.
+## Importing and exporting modules
+imports have to be at the top level. When I did if statement for when in development to use middleware for webpack I had above error, I had to do deperate if statements to put the areas in the correct places.  
 
 to do:
 - tidy up npm scripts, how to work on development project without relying on heroku database,
@@ -43,6 +45,6 @@ need some setting for development vs production. Look at webpack-dev-server , ho
 - responsive, look at hamburger and toggle navigation on smaller screens.
 - rest of the work on filters, display categories, etc
 - remember to comment
-- struggled to get responsive image maintaining aspect for home page, I think have done it but need to check ok on iphone 6 setting. 
-- After I made a development environment with middlware for webpack-dev-server and hot module this worked for use locally as well as with heruko local. Did not work on deploy as only uses dependencies and not dev dependencies. so crashed at server.js as no module to import for the webpack-hot-middleware or webpack-dev-middleware. Will need to work out how to not use these in development.
+- struggled to get responsive image maintaining aspect for home page, I think have done it but need to check ok on iphone 6 setting.
 - when I had deployed before above crash for some reason was not able to submit to the heroku postgres database. error message about function.keys could use undefined or null as object.
+- note I have debug mode on in .babelrc file

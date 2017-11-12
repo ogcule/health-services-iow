@@ -3,23 +3,19 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
 import expressValidator from 'express-validator';
-import webpack from 'webpack';
-import webpackDevMiddleware from 'webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
 import routes from './routes';
-import config from './../webpack.dev.js';
-
 const app = express();
-const compiler = webpack(config);
-
 const PORT = process.env.PORT || 3000;
 
 if (process.env.NODE_ENV !== 'production') {
   console.log('Looks like we are in development mode!');
-}
-
+  const webpack = require( 'webpack');
+  const webpackDevMiddleware = require('webpack-dev-middleware');
+  const webpackHotMiddleware = require('webpack-hot-middleware');
+  const config =  require('./../webpack.dev.js');
 /* Add the webpack-dev-middleware and use the webpack.dev.js
  configuration file as a base */
+ const compiler = webpack(config);
 app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath
 }));
@@ -27,6 +23,8 @@ app.use(webpackDevMiddleware(compiler, {
   app.use(webpackHotMiddleware(compiler, {
     path: '/__webpack_hmr'
   }));
+}
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 /* app.use(express.static(path.join(__dirname, '..', 'dist')));

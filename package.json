@@ -11,6 +11,7 @@
     "lint:server": "eslint ./server/*.js*",
     "compile:server": "babel ./server -d ./lib",
     "server": "node ./lib/server.js",
+    "prod": "npm-run-all build compile:server",
     "dev": "npm-run-all build:dev compile:server server"
   },
   "devDependencies": {

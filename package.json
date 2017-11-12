@@ -6,8 +6,12 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack -p --config ./webpack.prod.js --progress",
-    "lint:server":"eslint ./server/*.js*",
-    "compile:server": "babel ./server -d ./lib"
+    "start:dev": "webpack-dev-server --config ./webpack.dev.js --progress --hot",
+    "build:dev": "webpack --config ./webpack.dev.js",
+    "lint:server": "eslint ./server/*.js*",
+    "compile:server": "babel ./server -d ./lib",
+    "server": "node ./lib/server.js",
+    "dev": "npm-run-all build:dev compile:server server"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
@@ -34,6 +38,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
     "uglifyjs-webpack-plugin": "^1.0.1",
+    "webpack-dev-middleware": "^1.12.0",
     "webpack-dev-server": "^2.9.1",
     "webpack-node-externals": "^1.6.0",
     "yarn-run-all": "^3.1.1"

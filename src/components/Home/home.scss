@@ -9,25 +9,40 @@
   align-items: center;
 }
 .about {
-  display: flex;
+  display:flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   height: 70%;
   width: 70%;
-  border: black solid 2px;
-  background: linear-gradient(
-    to bottom,
-    $white 0%,
-    $white 50%,
-    $blue 50%,
-    $blue 100%
-  );
+  color: white;
+  // border: black solid 2px;
+  background: $blue;
+  // background: linear-gradient(
+  //   to bottom,
+  //   $white 0%,
+  //   $white 50%,
+  //   $blue 50%,
+  //   $blue 100%
+  // );
+  .innerDiv{
+    width: 80%;
+    height: 80%;
+    display: flex;
+    flex-flow:column nowrap;
+    justify-content: space-around;
+  }
   img{
+    // to get responsive image that keeps its aspect ratio
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    margin:0 auto;
     display: block;
-      margin: auto;
-      width: 60%;
-      animation: spinningIsland 3s 1 linear;
+      // animation: spinningIsland 3s 1 linear;
+      // not working well in production
+  }
+  P{
   }
 }
 @keyframes spinningIsland {

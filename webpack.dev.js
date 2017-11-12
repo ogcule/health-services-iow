@@ -1,7 +1,10 @@
 const merge = require('webpack-merge');
+const path = require('path');
+const webpack = require('webpack');
 const common = require('./webpack.common.js');
 
  module.exports = merge(common, {
+   entry: ['webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr&reload=true'],
    module: {
      rules: [
        {
@@ -13,8 +16,16 @@ const common = require('./webpack.common.js');
      },
    devtool: 'inline-source-map',
    devServer: {
-     proxy: {
-       "/": "http://localhost:3000"
-     }
-   }
+     contentBase: path.join(__dirname, "dist"),
+     compress: true,
+     hot: true,
+     historyApiFallback: true
+   },
+   plugins: [
+     new webpack.HotModuleReplacementPlugin(),
+     new webpack.NoEmitOnErrorsPlugin()
+   ],
+   output: {
+      publicPath: '/'
+    }
  });

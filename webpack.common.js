@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 
 module.exports = {
-  entry: './src/index.jsx',
+  entry: ['./src/index.jsx'],
   resolve: {
     extensions: ['.js', '.jsx']
   },
@@ -64,8 +64,7 @@ module.exports = {
       new HtmlWebpackPlugin({
         template: 'src/index.html'
       }),
-      new ExtractTextPlugin("styles.css"),
-      new webpack.HotModuleReplacementPlugin()
+      new ExtractTextPlugin("styles.css")
     ],
   output: {
     filename: 'client.bundle.js',

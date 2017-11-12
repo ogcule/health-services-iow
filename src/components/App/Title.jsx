@@ -4,7 +4,7 @@ import Nav from './../Nav/Nav';
 
 const Title = () => (
   <header className={styles.header}>
-    <h1>Information Portal</h1>
+    <h1>Portal</h1>
     <Nav />
   </header>
 );

@@ -46,6 +46,12 @@ In Procfile
 ```
 web: NODE_ENV=production node ./lib/server.js
 ```
+## Why will the form not submit in heroku?
+#### Answer: unique constraint "service_email_key"!!!
+In my heroku postgres service table I had set email to be unique. I had not realised this and wandered why was getting error when I was trying to submit. I found the error in the heroku logs. I should add more info on my error message I have when their is a problem with submitting the form.
+
+---
+
 to do:
 - tidy up npm scripts, how to work on development project without relying on heroku database,
 need some setting for development vs production. Look at webpack-dev-server , hot etc.
@@ -54,5 +60,5 @@ need some setting for development vs production. Look at webpack-dev-server , ho
 - rest of the work on filters, display categories, etc
 - remember to comment
 - struggled to get responsive image maintaining aspect for home page, I think have done it but need to check ok on iphone 6 setting.
-- when I had deployed before above crash for some reason was not able to submit to the heroku postgres database. error message about function.keys could use undefined or null as object.
 - note I have debug mode on in .babelrc file
+- remove the _**unique constraint**_ for email on the heroku postgres database.

@@ -9,7 +9,7 @@ CREATE TABLE service (
   name VARCHAR NOT NULL UNIQUE ,
   address VARCHAR NOT NULL,
   telephone VARCHAR(12) NOT NULL,
-  email TEXT NOT NULL UNIQUE,
+  email TEXT NOT NULL,
   category VARCHAR NOT NULL,
   description VARCHAR NOT NULL,
   link VARCHAR NOT NULL,

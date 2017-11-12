@@ -36,8 +36,16 @@ entry: ['webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr&
 
 I had a problem with getting browser to reload when I altered a component. Solution was that I had not added `&reload=true`.
 ## Importing and exporting modules
-imports have to be at the top level. When I did if statement for when in development to use middleware for webpack I had above error, I had to do deperate if statements to put the areas in the correct places.  
-
+imports have to be at the top level. When I did if statement for when in development to use middleware for webpack I had above error, I had to do deperate if statements to put the areas in the correct places.
+## NODE_ENV
+After I changed the server.js code to have an if satement for development environment heroku was thinking is was in development. This is a bit strange as a thought this was the default for heroku. You can set heroku with this:
+```
+heroku config:set NODE_ENV="production"
+```
+In Procfile
+```
+web: NODE_ENV=production node ./lib/server.js
+```
 to do:
 - tidy up npm scripts, how to work on development project without relying on heroku database,
 need some setting for development vs production. Look at webpack-dev-server , hot etc.

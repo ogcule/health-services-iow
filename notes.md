@@ -52,6 +52,10 @@ In my heroku postgres service table I had set email to be unique. I had not real
 
 ---
 
+### Brew and PSQL
+I used brew services to help mange launching of postgres on startup.
+When using psql on the command line had message that postgres not running. When I searched for solution it was to delete _**postmaster.pid**_ from /usr/local/var/postgres/.
+
 to do:
 - tidy up npm scripts, how to work on development project without relying on heroku database,
 need some setting for development vs production. Look at webpack-dev-server , hot etc.

@@ -2,9 +2,28 @@
 @import "../../styles/buttons";
 @import "../../styles/fonts";
 @import "../../styles/container";
-
 .servicesBox {
   @extend .outerBox;
+}
+.serviceContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border: solid 1px $base;
+}
+.serviceInfo {
+  flex:1;
+  display: flex;
+  border-right: solid 1px $base;
+  padding: 0.5em;
+}
+.serviceContact{
+  flex:1;
+  height: 100%;
+  padding: 0.5em;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content:flex-end;
 }
 p.required, span.required {
   margin: 0;
@@ -55,39 +74,55 @@ hr {
 }
 ul {
   list-style-type: none;
+  width: 100%;
 }
-table {
-  flex: 1 1 auto;
-  border-collapse: collapse;
-  max-width: 80%;
-  color: black;
+.service {
+  .description {
+    text-align: justify;
+  }
+  li {
+    padding: 0.25rem;
+    span{
+      float:left;
+      color: $base;
+      font-weight:600;
+    }
+  }
 }
-thead{
+.liFlex{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.serviceHeading {
+  @extend .liFlex;
   background-color: lighten($base, 40%);
+  border-radius: 5px;
   color: darken($base, 10%);
 }
-th, td {
-  padding: 0.25rem;
-  text-align: left;
-  border: 1px solid $base;
-}
-.services{
-li {
-  padding: 0.25rem;
-  span{
-    display: block;
-    color: $base;
-    font-weight:600;
+.contactDetails {
+  display: flex;
+  flex-flow: column nowrap;
+  li {
+    text-align: right;
+    padding: 0.25rem;
+    span{
+      float:left;
+      color: $base;
+      font-weight:600;
+    }
+  }
+  a {
+    text-decoration: none;
+    &:link {
+      color: $base;
+    }
+    &:hover{
+      text-decoration: underline;
+    }
   }
 }
-a {
-  text-decoration: none;
-  &:link {
-    color: $base;
-  }
-  &:hover{
-    text-decoration: underline;
-  }
-}
-
+.centerText{
+  width: 100%;
+  text-align: center;
 }

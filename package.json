@@ -6,13 +6,13 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack -p --config ./webpack.prod.js --progress",
-    "start:dev": "webpack-dev-server --config ./webpack.dev.js --progress --hot",
+    "start:client": "webpack-dev-server --config ./webpack.dev.js --progress",
     "build:dev": "webpack --config ./webpack.dev.js",
-    "lint:server": "eslint ./server/*.js*",
+    "lint:server": "eslint ./lib/server/*.js*",
     "compile:server": "babel ./server -d ./lib",
     "server": "node ./lib/server.js",
     "prod": "npm-run-all build compile:server",
-    "dev": "npm-run-all build:dev compile:server server"
+    "dev": "npm-run-all compile:server server start:client"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
@@ -61,8 +61,8 @@
     "webpack-merge": "^4.1.1"
   },
   "engines": {
-    "node": "6.11.1",
-    "npm": "5.4.2",
-    "yarn": "1.2.1"
+    "node": "8.9.1",
+    "npm": "5.5.1",
+    "yarn":"1.2.1"
   }
 }

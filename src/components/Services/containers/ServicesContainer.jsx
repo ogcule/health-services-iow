@@ -110,7 +110,7 @@ class ServicesContainer extends React.Component {
     e.preventDefault();
     apiServices.requestPost(...defaultFormValues(this.state.values))
       .then((data) => {
-          console.log('Response data from submit call in ServicesContainer', data);
+        console.log('Response data from submit call in ServicesContainer', data);
         /* data from requstPost is either an error message(object)
         or returned id number if successful */
         if (typeof data !== 'number') {
@@ -142,7 +142,6 @@ class ServicesContainer extends React.Component {
         return data;
       })
       .then((results) => {
-        console.log('Second .then from submit call in ServicesContainer', results);
         /* if id (number) returned then successful submission
         and can reload services and clear form, show message */
         if (typeof results === 'number') {

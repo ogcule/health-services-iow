@@ -18,15 +18,15 @@ const Service = (props) => {
           <li className={styles.description}>
             {description}
           </li>
-          <li><span>category: </span>{category}</li>
-          <li><span>category(rcgp): </span>{rcgp}</li>
+          <li><span>Category:</span>{category}</li>
+          <li><span>RCGP Curriculum:</span>{rcgp}</li>
         </ul>
       </div>
       <div className={styles.serviceContact}>
         <ul className={styles.contactDetails}>
-          <li><span className={styles.centerText}>Contact details</span></li>
+          <li><h3>Contact details</h3></li>
           <li><span>Address:</span>{address}</li>
-          <li><span>postcode:</span>{postcode}</li>
+          <li><span>Postcode:</span>{postcode}</li>
           <li><span>Tel:</span>{telephone}</li>
           <li>
             <span>
@@ -39,7 +39,6 @@ const Service = (props) => {
           <li>
             <span>
               <img src={linkImg} alt="web link" />
-              :
             </span>
             <a href={link} target="_blank">
               {link === 'https://www.nhs.uk/' ? 'nhs choices' : name}

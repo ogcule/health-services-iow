@@ -21,9 +21,6 @@
   flex:1;
   height: 100%;
   padding: 0.5em;
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content:flex-end;
 }
 p.required, span.required {
   margin: 0;
@@ -64,17 +61,15 @@ form{
   }
 }
 }
-hr {
-  height: 1px;
-  color: $base;
-  background: $base;
-  font-size: 0;
-  border: 0;
-  margin: 5px 0;
-}
 ul {
   list-style-type: none;
   width: 100%;
+}
+span {
+  padding-right: 5px;
+  float:left;
+  color: $base;
+  font-weight:600;
 }
 .service {
   .description {
@@ -82,35 +77,37 @@ ul {
   }
   li {
     padding: 0.25rem;
-    span{
-      float:left;
-      color: $base;
-      font-weight:600;
-    }
+    color: black;
   }
 }
 .liFlex{
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content:space-between;
 }
 .serviceHeading {
   @extend .liFlex;
   background-color: lighten($base, 40%);
   border-radius: 5px;
+  img {
+    width: 100px;
+    height: 50px;
+  }
+  h3 {
   color: darken($base, 10%);
 }
+}
 .contactDetails {
-  display: flex;
-  flex-flow: column nowrap;
   li {
-    text-align: right;
-    padding: 0.25rem;
-    span{
-      float:left;
-      color: $base;
-      font-weight:600;
-    }
+    padding: 5px;
+    color: black;
+  }
+  h3{
+    margin:0;
+    padding:0;
+    width:100%;
+    color: $base;
+    text-align: center;
   }
   a {
     text-decoration: none;
@@ -123,6 +120,5 @@ ul {
   }
 }
 .centerText{
-  width: 100%;
   text-align: center;
 }

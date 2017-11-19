@@ -8,10 +8,9 @@ const getAllServices = (req, res, next) => {
   });
 }
 
-// get service by id
-const getSingleService = (req, res, next) => {
-  var serviceID = parseInt(req.params.id);
-  db.one('SELECT * FROM service WHERE id = $1', serviceID)
+// get services by Category
+const getServicesByCategory = (req, res, next) => {
+  db.any('SELECT * FROM service WHERE category = $1', req.params.category)
     .then((data) => {
     res.status(200).json(data);
   }).catch((err) => {
@@ -62,4 +61,4 @@ const removeService = (req, res, next) => {
       return next(err);
     });
 }
-export {getAllServices, getSingleService, createService, updateService, removeService}
+export {getAllServices, createService, updateService, removeService, getServicesByCategory}

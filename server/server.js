@@ -46,6 +46,7 @@ app.get(/^\/(?!api).*/, (req, res) => {
   path when no in production mode */
   res.sendFile(path.resolve('dist','index.html'));
 });
+routes(app);
 // error handler
 app.use((err, req, res, next) => {
   res.status(err.status || 500)
@@ -55,8 +56,6 @@ app.use((err, req, res, next) => {
     });
   next();
 });
-
-routes(app);
 
 
 app.listen(PORT, () => {

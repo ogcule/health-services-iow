@@ -7,6 +7,11 @@ export default {
       .then(response => response.data)
       .catch(error => console.log(error));
   },
+  requestGetCategory(category) {
+    return axios.get(`/api/service/${category}`)
+      .then(response => response.data)
+      .catch(error => console.log(error));
+  },
   requestPost(
     name,
     category,

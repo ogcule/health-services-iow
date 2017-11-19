@@ -9,12 +9,14 @@ import OpenFormBtn from './../shared/OpenFormBtn';
 const FaqPage = props => (
   <div className={styles.faqBox}>
     <Subtitle subtitle="Frequently asked questions" />
-    {!props.expanded ? <OpenFormBtn text="Add Question" openForm={props.handleFormChange} />
-                            : <FormContainer
-                              addMessage={props.addMessage}
-                              updateQuestions={props.updateQuestions}
-                              closeForm={props.handleFormChange}
-                            />
+    <div className={styles.faqBtnContainer}>
+      <OpenFormBtn text="Add Question" openForm={props.handleFormChange} />
+    </div>
+    {props.expanded && <FormContainer
+      addMessage={props.addMessage}
+      updateQuestions={props.updateQuestions}
+      closeForm={props.handleFormChange}
+    />
     }
     <Questions
       messageShown={props.messageShown}

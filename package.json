@@ -11,8 +11,9 @@
     "lint:server": "eslint ./lib/server/*.js*",
     "compile:server": "babel ./server -d ./lib",
     "server": "node ./lib/server.js",
+    "server:dev": "nodemon --exec babel-node ./server/server.js",
     "prod": "npm-run-all build compile:server",
-    "dev": "npm-run-all compile:server server start:client"
+    "dev": "npm-run-all server:dev start:client"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",

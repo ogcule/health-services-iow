@@ -9,14 +9,15 @@
   flex:0 1 auto;
 }
 .add{
-  width: 80%;
-  text-align: right;
-  p{
-  margin: 0;
-  padding: 0.2rem;
-}
+  margin-left: 5px;
+  float:right;
   button{
-    @include button(1em, lighten($brown, 40%), $brown);
+    @include reset-button(1.5em);
+    height: 22px;
+    width: 22px;
+    background: center no-repeat;
+    background-size: contain;
+    background-image: url('./../../images/add.png');
 }
 }
 .closebtn {

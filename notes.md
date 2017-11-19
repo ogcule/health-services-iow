@@ -56,6 +56,31 @@ In my heroku postgres service table I had set email to be unique. I had not real
 I used brew services to help mange launching of postgres on startup.
 When using psql on the command line had message that postgres not running. When I searched for solution it was to delete _**postmaster.pid**_ from /usr/local/var/postgres/.
 
+### Express Routing
+I found out about two ways to GET data in express. This is by parameter or query.
+
+#### _Parameter_
+```
+app.get('/api/services/:id', (req, res) => {
+  const id = req.params.id;
+  res.send(id);
+  });
+```
+#### _Query_
+```
+app.get('/api/service*', (req, res) => {
+  const id = req.query.id;
+  res.send(id);
+  });
+  ```
+A query would look like:
+- /api/service?category=Community
+
+A parameter would look like this:
+- /api/service/Community
+
+I had problems where the /api/service route was getting used when I wanted the /api/service/:category. I found that this was due to the order of the routes as the parameter route was not being uses as the first was used before it could get to to it. This can be fixed by changing the order or use of {next()}
+
 to do:
 - tidy up npm scripts, how to work on development project without relying on heroku database,
 need some setting for development vs production. Look at webpack-dev-server , hot etc.

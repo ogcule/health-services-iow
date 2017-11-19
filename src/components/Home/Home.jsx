@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './home.scss';
-import island from './../../images/iow.png';
+import island from './../../images/iowBig.png';
 
 const Home = () => (
   <div className={styles.container}>

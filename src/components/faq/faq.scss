@@ -5,10 +5,21 @@
 .faqBox{
   @extend .outerBox;
 }
+.transparentBg {
+  @extend .transparentBg;
+}
+.faqBtnContainer {
+  width: 80%;
+  height: 35px;
+}
 .formContainerFaq {
   @extend .formContainer;
+  width: 80%;
+  margin: 5% auto 0 auto;
 form {
-  flex: 1 1 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
   background-color: $white;
   border-radius: 5px;
   padding: 5px;
@@ -62,14 +73,12 @@ ul{
   font-size: 1.1em
 }
 .questions{
-  flex: 1 1 auto;
-  min-width: 80%;
+  width: 80%;
   border: $base solid 2px;
   border-radius: 5px;
   background-color: lighten($base, 40%);
   padding: 10px;
   color: darken($base, 10%);
-  overflow: auto;
   ul{
     margin-bottom: 5px;
     background-color: $white;
@@ -80,3 +89,14 @@ ul{
     list-style-type: none;
   }
 }
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+@media only screen
+  and (max-width: 667px)
+  and (orientation: portrait) {
+    .faqBtnContainer {
+      width: 100%;
+    }
+    .formContainerFaq {
+      width:100%;
+    }
+  }

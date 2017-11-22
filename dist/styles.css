@@ -253,6 +253,21 @@ span {
     text-align: center;
     color: #FF5300; }
 
+.src-components-Services-services__tagContainer--2McRD {
+  position: relative; }
+
+svg {
+  position: absolute;
+  z-index: -1; }
+
+.src-components-Services-services__tagContent--li7EU {
+  position: relative;
+  word-break: break-all;
+  width: 110px;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 @media only screen and (max-width: 667px) and (orientation: portrait) {
   .src-components-Services-services__innerContainer--2Zkd- {
@@ -360,7 +375,7 @@ span {
       -ms-flex-align: center;
           align-items: center; }
 
-.src-components-Home-home__about--V22sZ {
+.src-components-Home-home__innerDiv--3IV3Z {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -379,25 +394,14 @@ span {
   color: #004282;
   background: -webkit-gradient(linear, left top, right bottom, from(#82c2ff), to(#005cb5));
   background: linear-gradient(to bottom right, #82c2ff, #005cb5); }
-  .src-components-Home-home__about--V22sZ .src-components-Home-home__innerDiv--3IV3Z {
-    width: 80%;
-    height: 80%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-flow: column nowrap;
-            flex-flow: column nowrap;
-    -ms-flex-pack: distribute;
-        justify-content: space-around; }
-  .src-components-Home-home__about--V22sZ img {
+  .src-components-Home-home__innerDiv--3IV3Z img {
     height: auto;
-    max-height: 100%;
-    max-width: 100%;
+    max-height: 70%;
+    max-width: 70%;
     margin: 0 auto;
     display: block; }
-  .src-components-Home-home__about--V22sZ P {
+  .src-components-Home-home__innerDiv--3IV3Z P {
+    width: 80%;
     padding: 5px;
     background-color: white;
     border-radius: 5px; }
@@ -429,6 +433,35 @@ span {
   100% {
     -webkit-transform: rotateY(0deg);
             transform: rotateY(0deg); } }
+
+@media only screen and (max-width: 667px) and (orientation: landscape) {
+  .src-components-Home-home__innerDiv--3IV3Z {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    padding: 1%; }
+    .src-components-Home-home__innerDiv--3IV3Z img {
+      width: 40%; }
+    .src-components-Home-home__innerDiv--3IV3Z P {
+      width: 40%; } }
+
+@media only screen and (max-height: 460px) {
+  .src-components-Home-home__innerDiv--3IV3Z {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    padding: 1%; }
+    .src-components-Home-home__innerDiv--3IV3Z img {
+      width: 40%; }
+    .src-components-Home-home__innerDiv--3IV3Z P {
+      width: 40%;
+      font-size: 1em; } }
 .src-components-faq-faq__formBtn--1gajK {
   padding: 0.5em 1em 0 0; }
   .src-components-faq-faq__formBtn--1gajK button {

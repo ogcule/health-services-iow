@@ -54,6 +54,7 @@
     .innerDiv {
       flex-flow: row nowrap;
       justify-content: space-around;
+        padding: 1%;
       img {
         width: 40%;
       }
@@ -64,14 +65,16 @@
 }
 @media only screen
     and (max-height: 460px) {
-      .innerDiv {
-        flex-flow: row nowrap;
-        justify-content: space-around;
-        img {
-          width: 40%;
+        .innerDiv {
+          flex-flow: row nowrap;
+          justify-content: space-around;
+          padding: 1%;
+          img {
+            width: 40%;
+          }
+          P {
+            width:40%;
+            font-size: 1em;
+          }
         }
-        P {
-          width:40%;
-        }
-      }
     }

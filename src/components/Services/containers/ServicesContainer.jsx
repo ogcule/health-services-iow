@@ -12,6 +12,11 @@ class ServicesContainer extends React.Component {
       expanded: false,
       message: false,
       errorSubmit: false,
+      filteredView: false,
+      filter: {
+        category: '',
+        filteredServices: [],
+      },
       values: {
         image: '',
         rcgpCategory: 'Healthy People',
@@ -23,6 +28,7 @@ class ServicesContainer extends React.Component {
         email: '',
         weblink: '',
         postcode: '',
+        tags: '',
       },
       errorMsg: {
         name: '',
@@ -40,9 +46,12 @@ class ServicesContainer extends React.Component {
     this.handleClearForm = this.handleClearForm.bind(this);
     this.handleMessageChange = this.handleMessageChange.bind(this);
     this.handleClearErrorMsg = this.handleClearErrorMsg.bind(this);
+    this.handleFilterClick = this.handleFilterClick.bind(this);
+    this.handleFilterChange = this.handleFilterChange.bind(this);
+    this.handleClearAll = this.handleClearAll.bind(this);
   }
   componentDidMount() {
-    this.getAllServices();
+    // this.getAllServices();
   }
   // function that call that gets all service information
   getAllServices() {
@@ -68,6 +77,26 @@ class ServicesContainer extends React.Component {
   handleMessageChange() {
     this.setState(prevState => ({ message: !prevState.message }));
   }
+  handleFilterChange() {
+    this.setState(prevState => ({ filteredView: !prevState.filteredView }));
+  }
+  handleFilterClick(e) {
+    e.preventDefault();
+    const { target } = e;
+    const category = target.getAttribute('data-category');
+    apiServices.requestGetCategory(category)
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          loaded: true,
+          filter: {
+            filteredServices: data,
+            category,
+          },
+        });
+      });
+    this.handleFilterChange();
+  }
   // handler for changing state from input values on the form
   handleInputChange(event) {
     const { target } = event;
@@ -76,6 +105,37 @@ class ServicesContainer extends React.Component {
     this.setState(prevState => (
       { values: Object.assign({}, prevState.values, { [name]: value }) }
     ));
+  }
+  handleClearAll() {
+    this.setState({
+      values: {
+        image: '',
+        rcgpCategory: 'Healthy People',
+        category: 'Community',
+        name: '',
+        description: '',
+        address: '',
+        telephone: '',
+        email: '',
+        weblink: '',
+        postcode: '',
+      },
+      filter: {
+        category: '',
+        filteredServices: [],
+      },
+      errorMsg: {
+        name: '',
+        description: '',
+        telephone: '',
+        postcode: '',
+        email: '',
+        weblink: '',
+        image: '',
+      },
+      filteredView: false,
+      loaded: false,
+    });
   }
   handleClearForm() {
     this.setState({
@@ -142,7 +202,6 @@ class ServicesContainer extends React.Component {
         return data;
       })
       .then((results) => {
-        console.log('Second .then from submit call in ServicesContainer', results);
         /* if id (number) returned then successful submission
         and can reload services and clear form, show message */
         if (typeof results === 'number') {
@@ -170,11 +229,16 @@ class ServicesContainer extends React.Component {
         expanded={this.state.expanded}
         handleFormChange={this.handleFormChange}
         handleInputChange={this.handleInputChange}
+        handleFilterClick={this.handleFilterClick}
+        handleFilterChange={this.handleFilterChange}
+        handleClearAll={this.handleClearAll}
         message={this.state.message}
         handleSubmit={this.handleSubmit}
         values={this.state.values}
         errorMsg={this.state.errorMsg}
         errorSubmit={this.state.errorSubmit}
+        filter={this.state.filter}
+        filteredView={this.state.filteredView}
       />
     );
   }

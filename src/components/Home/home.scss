@@ -15,16 +15,8 @@
   align-items: center;
   height: 70%;
   width: 70%;
-  color: white;
-  // border: black solid 2px;
-  background: $blue;
-  // background: linear-gradient(
-  //   to bottom,
-  //   $white 0%,
-  //   $white 50%,
-  //   $blue 50%,
-  //   $blue 100%
-  // );
+  color: darken($base, 10%);
+  background: linear-gradient(to bottom right, lighten($base, 40%), $base);
   .innerDiv{
     width: 80%;
     height: 80%;
@@ -43,6 +35,9 @@
       // not working well in production
   }
   P{
+    padding: 5px;
+    background-color: white;
+    border-radius: 5px;
   }
 }
 @keyframes spinningIsland {

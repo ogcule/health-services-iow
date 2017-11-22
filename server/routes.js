@@ -1,10 +1,11 @@
 import { check, validationResult } from 'express-validator/check';
-import { getAllServices, getSingleService, createService, updateService, removeService } from './hsControllers';
+import * as services from './hsControllers';
 import { getAllFaq, getFaq, createFaq, updateFaq, removeFaq } from './faqControllers';
 
 const routes = (app) => {
-  app.get('/api/service', getAllServices);
-  app.get('/api/service/:id', getSingleService);
+  app.get('/api/service/categories/:category', services.getServicesByCategory);
+  app.get('/api/service/:tags', services.getServicesByTags);
+  app.get('/api/service', (req, res) => console.log('All services called', req.params.category));
   app.post('/api/service', [
     check('name', 'Please enter a name for the service').isLength({ min: 1 }),
     check('description', 'Please enter a description').isLength({ min: 1 }),
@@ -21,9 +22,9 @@ const routes = (app) => {
       return res.status(422).json({ error: errors.mapped() });
     }
     next();
-  }, createService);
-  app.put('/api/service/:id', updateService);
-  app.delete('/api/service/:name', removeService);
+  }, services.createService);
+  app.put('/api/service/:id', services.updateService);
+  app.delete('/api/service/:name', services.removeService);
 
   app.get('/api/faq', getAllFaq);
   app.get('/api/faq/:id', getFaq);

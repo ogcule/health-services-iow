@@ -4,16 +4,14 @@ import styles from './shared.scss';
 
 const OpenFormBtn = props => (
   <div className={styles.add}>
-    <p>{props.text} <button onClick={props.openForm}>+</button></p>
+    <button className={styles.addBtn} onClick={props.openForm} />
   </div>
 );
 
 OpenFormBtn.propTypes = {
   openForm: PropTypes.func,
-  text: PropTypes.string,
 };
 OpenFormBtn.defaultProps = {
   openForm: null,
-  text: null,
 };
 export default OpenFormBtn;

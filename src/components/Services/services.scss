@@ -2,9 +2,39 @@
 @import "../../styles/buttons";
 @import "../../styles/fonts";
 @import "../../styles/container";
-
+a{
+  text-decoration: none;
+  cursor:pointer;
+  &:link {
+    color: $base;
+  }
+  &:hover{
+    text-decoration: underline;
+  }
+}
+.innerContainer {
+  width: 80%;
+}
 .servicesBox {
   @extend .outerBox;
+}
+.serviceContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border: solid 1px $base;
+  margin-bottom: 5px;
+}
+.serviceInfo {
+  flex:1;
+  display: flex;
+  border-right: solid 1px $base;
+  padding: 0.5em;
+}
+.serviceContact{
+  flex:1;
+  height: 100%;
+  padding: 0.5em;
 }
 p.required, span.required {
   margin: 0;
@@ -12,10 +42,15 @@ p.required, span.required {
   color: red;
   text-align: right;
 }
+.transparentBg{
+  @extend .transparentBg;
+}
 .formContainerServices {
   @extend .formContainer;
+  width: 80%;
+  margin: 5% auto 0 auto;
 form{
-    flex: 1 0 auto;
+    // flex: 1 0 auto;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
@@ -45,49 +80,125 @@ form{
   }
 }
 }
-hr {
-  height: 1px;
-  color: $base;
-  background: $base;
-  font-size: 0;
-  border: 0;
-  margin: 5px 0;
-}
 ul {
   list-style-type: none;
+  width: 100%;
 }
-table {
-  flex: 1 1 auto;
-  border-collapse: collapse;
-  max-width: 80%;
-  color: black;
+span {
+  padding-right: 5px;
+  float:left;
+  color: $base;
+  font-weight:600;
 }
-thead{
+.service {
+  .description {
+    text-align: justify;
+  }
+  li {
+    padding: 0.25rem;
+    color: black;
+  }
+}
+.liFlex{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:space-around;
+}
+.serviceHeading {
+  @extend .liFlex;
   background-color: lighten($base, 40%);
+  border-radius: 5px;
+  img {
+    width: 100px;
+    height: 50px;
+    margin: auto 0;
+  }
+  h3 {
   color: darken($base, 10%);
 }
-th, td {
-  padding: 0.25rem;
-  text-align: left;
-  border: 1px solid $base;
 }
-.services{
-li {
-  padding: 0.25rem;
-  span{
-    display: block;
+.contactDetails {
+  li {
+    padding: 5px;
+    color: black;
+  }
+  h3{
+    margin:0;
+    padding:0;
+    width:100%;
     color: $base;
-    font-weight:600;
+    text-align: center;
   }
 }
-a {
-  text-decoration: none;
-  &:link {
-    color: $base;
+.centerText{
+  text-align: center;
+}
+.categories {
+    li{
+      text-align: center;
+      padding: 1%;
+    }
+    button {
+      @include reset-button(1.2em);
+      color: $base;
+    }
+}
+.toolBar {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 5px;
+  width: 80%;
+  height: 35px;
+  background-color: lighten($base, 40%);
+  border: solid 1px $base;
+  margin-bottom: 5px;
+  h2 {
+    padding: 0;
+    margin: 0;
+    flex: 2;
   }
-  &:hover{
-    text-decoration: underline;
+  .backBtn {
+    height: 18px;
+    width: 24px;
+    @include reset-button(1.2em);
+    background: center no-repeat;
+    background-size: contain;
+    background-image: url('./../../images/left.png');
   }
 }
-
+// NoServices
+.noServices {
+  width:100%;
+  h2{
+    text-align: center;
+    color: $orange;
+  }
+}
+.tagContainer {
+  position: relative;
+}
+svg {
+  position: absolute;
+  z-index: -1;
+}
+.tagContent {
+  position: relative;
+  word-break: break-all;
+  width: 110px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+/* ----------- iPhone 6, 6S, 7 and 8 ----------- */
+@media only screen
+  and (max-width: 667px)
+  and (orientation: portrait) {
+    .innerContainer {
+      width: 100%;
+    }
+    .formContainerServices {
+      width:100%;
+    }
+    .toolBar {
+      width:100%;
+    }
 }

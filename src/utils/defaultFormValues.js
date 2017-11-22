@@ -24,7 +24,7 @@ export default function defaultFormValues(values) {
         case 'description':
           return '';
         case 'image':
-          return 'https://dummyimage.com/100x100/000/fff.png&text=service+image';
+          return 'https://picsum.photos/100/50/?random';
         case 'telephone':
           return '';
         case 'email':

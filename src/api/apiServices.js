@@ -7,6 +7,16 @@ export default {
       .then(response => response.data)
       .catch(error => console.log(error));
   },
+  requestGetTags(tag) {
+    return axios.get(`/api/service/${tag}`)
+      .then(response => response.data)
+      .catch(error => console.log(error));
+  },
+  requestGetCategory(category) {
+    return axios.get(`/api/service/categories/${category}`)
+      .then(response => response.data)
+      .catch(error => console.log(error));
+  },
   requestPost(
     name,
     category,
@@ -18,6 +28,7 @@ export default {
     address,
     rcgpCategory,
     postcode,
+    tags,
   ) {
     return axios({
       method: 'post',
@@ -33,6 +44,7 @@ export default {
         address,
         rcgpCategory,
         postcode,
+        tags,
         // property shorthand
       }),
     })

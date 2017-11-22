@@ -17,6 +17,15 @@ const getServicesByCategory = (req, res, next) => {
     return next(err);
   });
 }
+// get services by tags
+const getServicesByTags = (req, res, next) => {
+  db.any('SELECT * FROM service WHERE tags = $1', req.params.tags)
+    .then((data) => {
+    res.status(200).json(data);
+  }).catch((err) => {
+    return next(err);
+  });
+}
 
 const createService = (req, res, next) => {
   let newService = req.body;
@@ -61,4 +70,4 @@ const removeService = (req, res, next) => {
       return next(err);
     });
 }
-export {getAllServices, createService, updateService, removeService, getServicesByCategory}
+export {getAllServices, createService, updateService, removeService, getServicesByCategory, getServicesByTags};

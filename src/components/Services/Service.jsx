@@ -5,7 +5,7 @@ import { serviceInfoType } from './../../types/index';
 
 const Service = (props) => {
   const {
-    id, name, category, description, image, link, email, telephone, address, rcgp, postcode,
+    id, name, category, description, image, link, email, telephone, address, rcgp, postcode, tags,
   } = props.serviceInfo;
   return (
     <div key={id} data-id={id} className={styles.serviceContainer}>
@@ -20,6 +20,13 @@ const Service = (props) => {
           </li>
           <li><span>Category:</span>{category}</li>
           <li><span>RCGP Curriculum:</span>{rcgp}</li>
+          <li className={styles.tagContainer}>
+            <svg id="bg" width="150" height="100%" viewBox="0 0 150 100" preserveAspectRatio="none">
+              <path d="M0,0 h110 l40,50 l-40,50 h-110z" fill="#6ED901" />
+            </svg>
+            <span>Tag:</span>
+            <div className={styles.tagContents}>{tags}</div>
+          </li>
         </ul>
       </div>
       <div className={styles.serviceContact}>

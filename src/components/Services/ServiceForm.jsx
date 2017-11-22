@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './services.scss';
 import CloseFormBtn from './../shared/CloseFormBtn';
 import ErrorMsg from './../shared/ErrorMsg';
+import TagsMenu from './TagsMenu';
 import { categories, rcgpCurriculum } from './../../data/categories';
 
 const ServiceForm = props => (
@@ -29,6 +30,10 @@ const ServiceForm = props => (
               {category}
             </option>))}
         </select>
+        </label>
+        <label htmlFor="tags">
+          <span className={styles.required}>*</span> Tags:
+        <TagsMenu values={props.values} handleInputChange={props.handleInputChange} />
         </label>
         <label htmlFor="name">
           <span className={styles.required}>*</span> Name of Service:

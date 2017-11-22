@@ -14,8 +14,32 @@ CREATE TABLE service (
   description VARCHAR NOT NULL,
   link VARCHAR NOT NULL,
   rcgp VARCHAR NOT NULL,
-  postcode VARCHAR(8) NOT NULL
+  postcode VARCHAR(8) NOT NULL,
+  tags VARCHAR NOT NULL
 );
 
-INSERT INTO service (image, name, address, telephone, email, category, description, link, rcgp, postcode)
-  VALUES ( 'not available', 'not available','not available','111','not available','not available','not available','not available','not available','postcode');
+INSERT INTO service (image, name, address, telephone, email, category, description, link, rcgp, postcode, tags)
+  VALUES (
+    'not available',
+     'not available',
+     'not available',
+     '111111111111',
+     'not available',
+     'Community',
+     'not available',
+     'not available',
+     'Healthy People',
+     'postcode',
+     'Cardiovascular Health'
+   );
+
+  DROP TABLE IF EXISTS faq;
+  CREATE TABLE faq
+  (
+    ID SERIAL PRIMARY KEY,
+    question VARCHAR NOT NULL UNIQUE,
+    answer VARCHAR NOT NULL
+  );
+
+  INSERT INTO faq (question, answer)
+  VALUES ('Where to I find out about a service?', 'Hopefully with the help of this api!' );

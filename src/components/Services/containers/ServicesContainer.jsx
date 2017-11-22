@@ -28,6 +28,7 @@ class ServicesContainer extends React.Component {
         email: '',
         weblink: '',
         postcode: '',
+        tags: '',
       },
       errorMsg: {
         name: '',

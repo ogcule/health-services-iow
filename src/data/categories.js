@@ -8,6 +8,7 @@ const categories = [
   'Mental Health',
   'Opticians',
   'Pharmacies',
+  'Safeguarding',
   'Urgent and Emergency Care',
 ];
 const rcgpCurriculum = [
@@ -34,4 +35,10 @@ const rcgpCurriculum = [
   { 21: 'Care of People with Skin Problems' },
 ];
 
-export { categories, rcgpCurriculum };
+const tags = [
+  'Cardiovascular Health',
+  'Children and Young People',
+  'Digestive Health',
+];
+
+export { categories, rcgpCurriculum, tags };

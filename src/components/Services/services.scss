@@ -174,7 +174,20 @@ span {
     color: $orange;
   }
 }
-
+.tagContainer {
+  position: relative;
+}
+svg {
+  position: absolute;
+  z-index: -1;
+}
+.tagContent {
+  position: relative;
+  word-break: break-all;
+  width: 110px;
+  padding: 10px;
+  box-sizing: border-box;
+}
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 @media only screen
   and (max-width: 667px)

@@ -18,6 +18,7 @@ const allServicesType = arrayOf(shape({
   rcgp: string,
   postcode: string,
   linkImg: string,
+  tags: string,
 }));
 
 const serviceInfoType = shape({
@@ -33,6 +34,7 @@ const serviceInfoType = shape({
   rcgp: string,
   postcode: string,
   linkImg: string,
+  tags: string,
 });
 
 const filterType = shape({
@@ -50,6 +52,7 @@ const filterType = shape({
     rcgp: string,
     postcode: string,
     linkImg: string,
+    tags: string,
   })),
 });
 
@@ -65,6 +68,7 @@ const handleClearAllType = shape({
     email: string,
     weblink: string,
     postcode: string,
+    tags: string,
   }),
   filter: shape({
     category: string,
@@ -81,6 +85,7 @@ const handleClearAllType = shape({
       rcgp: string,
       postcode: string,
       linkImg: string,
+      tags: string,
     })),
   }),
   errorMsg: shape({

@@ -3,7 +3,8 @@ import * as services from './hsControllers';
 import { getAllFaq, getFaq, createFaq, updateFaq, removeFaq } from './faqControllers';
 
 const routes = (app) => {
-  app.get('/api/service/:category', services.getServicesByCategory);
+  app.get('/api/service/categories/:category', services.getServicesByCategory);
+  app.get('/api/service/:tags', services.getServicesByTags);
   app.get('/api/service', (req, res) => console.log('All services called', req.params.category));
   app.post('/api/service', [
     check('name', 'Please enter a name for the service').isLength({ min: 1 }),

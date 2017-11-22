@@ -24,7 +24,6 @@ const Service = (props) => {
             <svg id="bg" width="150" height="100%" viewBox="0 0 150 100" preserveAspectRatio="none">
               <path d="M0,0 h110 l40,50 l-40,50 h-110z" fill="#6ED901" />
             </svg>
-            <span>Tag:</span>
             <div className={styles.tagContents}>{tags}</div>
           </li>
         </ul>

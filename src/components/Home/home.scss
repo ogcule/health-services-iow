@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
 }
-.about {
+.innerDiv {
   display:flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -17,24 +17,18 @@
   width: 70%;
   color: darken($base, 10%);
   background: linear-gradient(to bottom right, lighten($base, 40%), $base);
-  .innerDiv{
-    width: 80%;
-    height: 80%;
-    display: flex;
-    flex-flow:column nowrap;
-    justify-content: space-around;
-  }
   img{
     // to get responsive image that keeps its aspect ratio
     height: auto;
-    max-height: 100%;
-    max-width: 100%;
+    max-height: 70%;
+    max-width: 70%;
     margin:0 auto;
     display: block;
       // animation: spinningIsland 3s 1 linear;
       // not working well in production
   }
   P{
+    width: 80%;
     padding: 5px;
     background-color: white;
     border-radius: 5px;
@@ -54,3 +48,30 @@
     transform:rotateY(0deg);
   }
 }
+@media only screen
+  and (max-width: 667px)
+  and (orientation: landscape) {
+    .innerDiv {
+      flex-flow: row nowrap;
+      justify-content: space-around;
+      img {
+        width: 40%;
+      }
+      P {
+        width:40%;
+      }
+    }
+}
+@media only screen
+    and (max-height: 460px) {
+      .innerDiv {
+        flex-flow: row nowrap;
+        justify-content: space-around;
+        img {
+          width: 40%;
+        }
+        P {
+          width:40%;
+        }
+      }
+    }

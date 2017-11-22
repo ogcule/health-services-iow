@@ -21,10 +21,10 @@ const Service = (props) => {
           <li><span>Category:</span>{category}</li>
           <li><span>RCGP Curriculum:</span>{rcgp}</li>
           <li className={styles.tagContainer}>
-            <svg id="bg" width="150" height="100%" viewBox="0 0 150 100" preserveAspectRatio="none">
-              <path d="M0,0 h110 l40,50 l-40,50 h-110z" fill="#6ED901" />
+            <svg id="bg" width="120" height="100%" viewBox="0 0 150 100" preserveAspectRatio="none">
+              <path d="M0,0 h110 l40,50 l-40,50 h-110z" fill="orange" />
             </svg>
-            <div className={styles.tagContents}>{tags}</div>
+            <div className={styles.tagContent}>{tags}</div>
           </li>
         </ul>
       </div>

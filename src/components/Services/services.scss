@@ -148,7 +148,7 @@ span {
   flex-flow: row nowrap;
   padding: 5px;
   width: 80%;
-  height: 35px;
+  min-height: 35px;
   background-color: lighten($base, 40%);
   border: solid 1px $base;
   margin-bottom: 5px;

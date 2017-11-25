@@ -5,6 +5,7 @@ import CloseFormBtn from './../shared/CloseFormBtn';
 import ErrorMsg from './../shared/ErrorMsg';
 import TagsMenu from './TagsMenu';
 import { categories, rcgpCurriculum } from './../../data/categories';
+import { serviceInfoType } from './../../types/index';
 
 const ServiceForm = props => (
   <div className={styles.transparentBg}>
@@ -85,7 +86,7 @@ ServiceForm.propTypes = {
   closeForm: PropTypes.func,
   handleSubmit: PropTypes.func,
   handleInputChange: PropTypes.func,
-  values: PropTypes.objectOf(PropTypes.string),
+  values: serviceInfoType,
   errorMsg: PropTypes.objectOf(PropTypes.string),
 };
 ServiceForm.defaultProps = {

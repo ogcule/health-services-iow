@@ -223,7 +223,7 @@ span {
           flex-flow: row nowrap;
   padding: 5px;
   width: 80%;
-  height: 35px;
+  min-height: 35px;
   background-color: #82c2ff;
   border: solid 1px #005cb5;
   margin-bottom: 5px; }
@@ -264,9 +264,10 @@ svg {
   position: relative;
   word-break: break-all;
   width: 110px;
-  padding: 10px;
+  padding: 5px 0 0 3px;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box; }
+          box-sizing: border-box;
+  font-size: 0.6em; }
 
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 @media only screen and (max-width: 667px) and (orientation: portrait) {
@@ -398,7 +399,6 @@ svg {
     height: auto;
     max-height: 70%;
     max-width: 70%;
-    margin: 0 auto;
     display: block; }
   .src-components-Home-home__innerDiv--3IV3Z P {
     width: 80%;
@@ -441,8 +441,7 @@ svg {
         -ms-flex-flow: row nowrap;
             flex-flow: row nowrap;
     -ms-flex-pack: distribute;
-        justify-content: space-around;
-    padding: 1%; }
+        justify-content: space-around; }
     .src-components-Home-home__innerDiv--3IV3Z img {
       width: 40%; }
     .src-components-Home-home__innerDiv--3IV3Z P {
@@ -455,13 +454,16 @@ svg {
         -ms-flex-flow: row nowrap;
             flex-flow: row nowrap;
     -ms-flex-pack: distribute;
-        justify-content: space-around;
-    padding: 1%; }
+        justify-content: space-around; }
     .src-components-Home-home__innerDiv--3IV3Z img {
       width: 40%; }
     .src-components-Home-home__innerDiv--3IV3Z P {
       width: 40%;
       font-size: 1em; } }
+
+@media only screen and (max-width: 390px) and (max-height: 460px) {
+  p {
+    display: none; } }
 .src-components-faq-faq__formBtn--1gajK {
   padding: 0.5em 1em 0 0; }
   .src-components-faq-faq__formBtn--1gajK button {

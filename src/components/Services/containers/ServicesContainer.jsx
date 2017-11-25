@@ -28,7 +28,7 @@ class ServicesContainer extends React.Component {
         email: '',
         weblink: '',
         postcode: '',
-        tags: 'Cardiovascular Health',
+        tags: ['Cardiovascular Health'],
       },
       errorMsg: {
         name: '',
@@ -100,11 +100,29 @@ class ServicesContainer extends React.Component {
   // handler for changing state from input values on the form
   handleInputChange(event) {
     const { target } = event;
-    const { value, name } = target;
-    /* using previousState  */
-    this.setState(prevState => (
-      { values: Object.assign({}, prevState.values, { [name]: value }) }
-    ));
+    const {
+      value, name, type, options,
+    } = target;
+    /* Dealing with multiple select dropdown menu */
+    if (type === 'select-multiple') {
+      const selectedOptions = [];
+      Object.values(options).map((option) => {
+        console.log(option.selected);
+        if (option.selected) {
+          selectedOptions.push(option.value);
+          console.log('selectedOptions', selectedOptions);
+        }
+        return selectedOptions;
+      });
+      /* using object.assign and previous state so keeping object shape and not making a new one */
+      this.setState(prevState => (
+        { values: Object.assign({}, prevState.values, { [name]: selectedOptions }) }
+      ));
+    } else {
+      this.setState(prevState => (
+        { values: Object.assign({}, prevState.values, { [name]: value }) }
+      ));
+    }
   }
   handleClearAll() {
     this.setState({
@@ -119,7 +137,7 @@ class ServicesContainer extends React.Component {
         email: '',
         weblink: '',
         postcode: '',
-        tags: '',
+        tags: ['Cardiovascular Health'],
       },
       filter: {
         category: '',
@@ -151,7 +169,7 @@ class ServicesContainer extends React.Component {
         email: '',
         weblink: '',
         postcode: '',
-        tags: 'Cardiovascular Health',
+        tags: ['Cardiovascular Health'],
       },
     });
   }

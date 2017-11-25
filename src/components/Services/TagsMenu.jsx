@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { tags } from './../../data/categories';
+import { serviceInfoType } from './../../types/index';
 
 const TagsMenu = props => (
-  <select id="tags" value={props.values.tags} name="tags" onChange={props.handleInputChange}>
+  <select id="tags" value={props.values.tags} name="tags" onChange={props.handleInputChange} multiple size="3">
     {tags.map(tag => (
       <option key={tag} value={tag}>
         {tag}
@@ -13,7 +14,7 @@ const TagsMenu = props => (
 
 TagsMenu.propTypes = {
   handleInputChange: PropTypes.func,
-  values: PropTypes.objectOf(PropTypes.string),
+  values: serviceInfoType,
 };
 TagsMenu.defaultProps = {
   handleInputChange: null,

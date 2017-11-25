@@ -9,7 +9,7 @@ import SuccessMessage from './../shared/SuccessMessage';
 import ErrorMsg from './../shared/ErrorMsg';
 import FilteredView from './FilteredView';
 import Categories from './Categories';
-import { filterType, handleClearAllType } from './../../types/index';
+import { serviceInfoType, filterType } from './../../types/index';
 // import { allServicesType } from './../../types/index';
 
 const ServicesPage = props => (
@@ -55,8 +55,8 @@ ServicesPage.propTypes = {
   handleInputChange: PropTypes.func,
   handleFilterClick: PropTypes.func,
   handleSubmit: PropTypes.func,
-  handleClearAll: handleClearAllType,
-  values: PropTypes.objectOf(PropTypes.string),
+  handleClearAll: PropTypes.func,
+  values: serviceInfoType,
   expanded: PropTypes.bool,
   message: PropTypes.bool,
   errorSubmit: PropTypes.bool,

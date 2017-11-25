@@ -1,11 +1,24 @@
 import React from 'react';
 import styles from './services.scss';
 import linkImg from '../../images/link.png';
+import Tag from './Tag';
 import { serviceInfoType } from './../../types/index';
 
 const Service = (props) => {
   const {
-    id, name, category, description, image, link, email, telephone, address, rcgp, postcode, tags,
+    id,
+    name,
+    category,
+    description,
+    image,
+    link,
+    email,
+    telephone,
+    address,
+    rcgp,
+    postcode,
+    tags,
+    referral,
   } = props.serviceInfo;
   return (
     <div key={id} data-id={id} className={styles.serviceContainer}>
@@ -20,12 +33,9 @@ const Service = (props) => {
           </li>
           <li><span>Category:</span>{category}</li>
           <li><span>RCGP Curriculum:</span>{rcgp}</li>
-          <li className={styles.tagContainer}>
-            <svg id="bg" width="120" height="100%" viewBox="0 0 150 100" preserveAspectRatio="none">
-              <path d="M0,0 h110 l40,50 l-40,50 h-110z" fill="orange" />
-            </svg>
-            <div className={styles.tagContent}>{tags}</div>
-          </li>
+          <ul className={styles.outerTagsContainer}>
+            {tags.map(tag => <Tag key={tag} tag={tag} />)}
+          </ul>
         </ul>
       </div>
       <div className={styles.serviceContact}>
@@ -50,6 +60,7 @@ const Service = (props) => {
               {link === 'https://www.nhs.uk/' ? 'nhs choices' : name}
             </a>
           </li>
+          <li><span>Referral route:</span>{referral}</li>
         </ul>
       </div>
     </div>

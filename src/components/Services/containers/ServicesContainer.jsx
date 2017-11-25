@@ -28,7 +28,8 @@ class ServicesContainer extends React.Component {
         email: '',
         weblink: '',
         postcode: '',
-        tags: ['Cardiovascular Health'],
+        tags: [],
+        referral: '',
       },
       errorMsg: {
         name: '',
@@ -138,6 +139,7 @@ class ServicesContainer extends React.Component {
         weblink: '',
         postcode: '',
         tags: ['Cardiovascular Health'],
+        referral: '',
       },
       filter: {
         category: '',
@@ -170,6 +172,7 @@ class ServicesContainer extends React.Component {
         weblink: '',
         postcode: '',
         tags: ['Cardiovascular Health'],
+        referral: '',
       },
     });
   }

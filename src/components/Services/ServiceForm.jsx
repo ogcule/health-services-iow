@@ -45,6 +45,10 @@ const ServiceForm = props => (
           <span className={styles.required}>*</span> Description of Service:
           <textarea id="description" name="description" type="text" value={props.values.description} onChange={props.handleInputChange} />
         </label>
+        <label htmlFor="referral">
+          Referral:
+          <textarea id="referral" name="referral" type="text" value={props.values.referral} onChange={props.handleInputChange} placeholder="Referral pathway" />
+        </label>
         {props.errorMsg.description && <ErrorMsg msg={props.errorMsg.description} />}
         <label htmlFor="address">
           Address:

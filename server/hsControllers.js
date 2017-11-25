@@ -30,8 +30,20 @@ const getServicesByTags = (req, res, next) => {
 const createService = (req, res, next) => {
   let newService = req.body;
   // use db.none if no returning data or use db.one if using returning data
-  db.one('INSERT INTO service(name, category, description, image, link, email, telephone, address, rcgp, postcode, tags) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING id',
-    [newService.name, newService.category, newService.description, newService.image, newService.weblink, newService.email, newService.telephone, newService.address, newService.rcgpCategory, newService.postcode, newService.tags])
+  db.one('INSERT INTO service(name, category, description, image, link, email, telephone, address, rcgp, postcode, tags, referral) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING id',
+    [newService.name,
+     newService.category,
+     newService.description,
+     newService.image,
+     newService.weblink,
+     newService.email,
+     newService.telephone,
+     newService.address,
+     newService.rcgpCategory,
+     newService.postcode,
+     newService.tags,
+     newService.referral,
+    ])
     .then((data) => {
       res.status(200)
         .json(data.id);

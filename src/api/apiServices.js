@@ -29,6 +29,7 @@ export default {
     rcgpCategory,
     postcode,
     tags,
+    referral,
   ) {
     return axios({
       method: 'post',
@@ -45,6 +46,7 @@ export default {
         rcgpCategory,
         postcode,
         tags,
+        referral,
         // property shorthand
       }),
     })

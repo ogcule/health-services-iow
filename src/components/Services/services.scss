@@ -175,7 +175,13 @@ span {
     color: $orange;
   }
 }
+.outerTagsContainer {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
 .tagContainer {
+  margin: 5px;
   position: relative;
 }
 svg {
@@ -185,7 +191,7 @@ svg {
 .tagContent {
   position: relative;
   word-break: break-all;
-  width: 110px;
+  width: 100px;
   padding: 5px 0 0 3px;
   box-sizing: border-box;
   font-size: 0.6em;

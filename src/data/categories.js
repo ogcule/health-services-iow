@@ -36,9 +36,23 @@ const rcgpCurriculum = [
 ];
 
 const tags = [
-  'Cardiovascular Health',
-  'Children and Young People',
-  'Digestive Health',
+  'Acutely ill', // red
+  'Cardiovascular', // blue
+  'Drug/Alcohol',
+  'End-of-Life',
+  'ENT/Oral/Facial',
+  'Eyes',
+  'Gastroenterology',
+  'Genetics',
+  'GUM',
+  'Metabolic',
+  'Musculoskeletal',
+  'Neurological',
+  'Older adults',
+  'Paediatrics',
+  'Respiratory',
+  'Skin',
+  'LD',
 ];
 
 export { categories, rcgpCurriculum, tags };

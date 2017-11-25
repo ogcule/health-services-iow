@@ -15,6 +15,7 @@ export default function defaultFormValues(values) {
     { rcgpCategory: values.rcgpCategory },
     { postcode: values.postcode },
     { tags: values.tags },
+    { referral: values.referral },
 
   ];
   const formValues = formValuesMap.map((key) => {
@@ -26,7 +27,7 @@ export default function defaultFormValues(values) {
         case 'description':
           return '';
         case 'image':
-          return 'https://picsum.photos/100/50/?random';
+          return 'http://res.cloudinary.com/deyh3ywme/image/upload/v1511615182/img_service_cwof3o.png';
         case 'telephone':
           return '';
         case 'email':

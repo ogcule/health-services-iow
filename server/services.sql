@@ -15,10 +15,11 @@ CREATE TABLE service (
   link VARCHAR NOT NULL,
   rcgp VARCHAR NOT NULL,
   postcode VARCHAR(8) NOT NULL,
-  tags VARCHAR NOT NULL
+  tags text[],
+  referral VARCHAR NOT NULL
 );
 
-INSERT INTO service (image, name, address, telephone, email, category, description, link, rcgp, postcode, tags)
+INSERT INTO service (image, name, address, telephone, email, category, description, link, rcgp, postcode, tags, referral)
   VALUES (
     'not available',
      'not available',
@@ -30,7 +31,8 @@ INSERT INTO service (image, name, address, telephone, email, category, descripti
      'not available',
      'Healthy People',
      'postcode',
-     'Cardiovascular Health'
+     array['Cardiovascular Health'],
+     'not available'
    );
 
   DROP TABLE IF EXISTS faq;

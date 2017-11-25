@@ -14,6 +14,8 @@ export default function defaultFormValues(values) {
     { address: values.address },
     { rcgpCategory: values.rcgpCategory },
     { postcode: values.postcode },
+    { tags: values.tags },
+
   ];
   const formValues = formValuesMap.map((key) => {
     console.log(key[Object.keys(key)[0]]);

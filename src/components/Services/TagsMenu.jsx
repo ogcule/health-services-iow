@@ -5,7 +5,7 @@ import { tags } from './../../data/categories';
 const TagsMenu = props => (
   <select id="tags" value={props.values.tags} name="tags" onChange={props.handleInputChange}>
     {tags.map(tag => (
-      <option key={tags} value={tags}>
+      <option key={tag} value={tag}>
         {tag}
       </option>))}
   </select>

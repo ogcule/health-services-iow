@@ -28,7 +28,7 @@ class ServicesContainer extends React.Component {
         email: '',
         weblink: '',
         postcode: '',
-        tags: '',
+        tags: 'Cardiovascular Health',
       },
       errorMsg: {
         name: '',
@@ -119,6 +119,7 @@ class ServicesContainer extends React.Component {
         email: '',
         weblink: '',
         postcode: '',
+        tags: '',
       },
       filter: {
         category: '',
@@ -150,6 +151,7 @@ class ServicesContainer extends React.Component {
         email: '',
         weblink: '',
         postcode: '',
+        tags: 'Cardiovascular Health',
       },
     });
   }
@@ -205,7 +207,6 @@ class ServicesContainer extends React.Component {
         /* if id (number) returned then successful submission
         and can reload services and clear form, show message */
         if (typeof results === 'number') {
-          this.getAllServices();
           this.handleClearForm();
           this.handleClearErrorMsg();
           this.handleMessageChange();

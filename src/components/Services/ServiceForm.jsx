@@ -10,6 +10,7 @@ import { serviceInfoType } from './../../types/index';
 const ServiceForm = props => (
   <div className={styles.transparentBg}>
     <div className={styles.formContainerServices}>
+      {props.errorSubmit && <ErrorMsg msg="Oops, error when trying to submit service!" />}
       <CloseFormBtn closeForm={props.closeForm} />
       <form method="post" onSubmit={props.handleSubmit} noValidate>
         <legend>Add a service</legend>
@@ -92,6 +93,7 @@ ServiceForm.propTypes = {
   handleInputChange: PropTypes.func,
   values: serviceInfoType,
   errorMsg: PropTypes.objectOf(PropTypes.string),
+  errorSubmit: PropTypes.bool,
 };
 ServiceForm.defaultProps = {
   closeForm: null,
@@ -99,5 +101,6 @@ ServiceForm.defaultProps = {
   handleInputChange: null,
   values: {},
   errorMsg: {},
+  errorSubmit: false,
 };
 export default ServiceForm;

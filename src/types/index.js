@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 
 const {
-  shape, number, string, arrayOf, bool,
+  shape, number, string, arrayOf, bool, oneOfType,
 } = PropTypes;
 // destructuring to shorten declarations
 const allServicesType = arrayOf(shape({
@@ -18,7 +18,10 @@ const allServicesType = arrayOf(shape({
   rcgp: string,
   postcode: string,
   linkImg: string,
-  tags: arrayOf(string),
+  tags: oneOfType([
+    string,
+    arrayOf(string),
+  ]),
   referral: string,
 }));
 
@@ -35,7 +38,10 @@ const serviceInfoType = shape({
   rcgp: string,
   postcode: string,
   linkImg: string,
-  tags: arrayOf(string),
+  tags: oneOfType([
+    string,
+    arrayOf(string),
+  ]),
   referral: string,
 });
 
@@ -54,7 +60,10 @@ const filterType = shape({
     rcgp: string,
     postcode: string,
     linkImg: string,
-    tags: arrayOf(string),
+    tags: oneOfType([
+      string,
+      arrayOf(string),
+    ]),
     referral: string,
   })),
 });
@@ -71,7 +80,10 @@ const handleClearAllType = shape({
     email: string,
     weblink: string,
     postcode: string,
-    tags: arrayOf(string),
+    tags: oneOfType([
+      string,
+      arrayOf(string),
+    ]),
     referral: string,
   }),
   filter: shape({
@@ -89,7 +101,10 @@ const handleClearAllType = shape({
       rcgp: string,
       postcode: string,
       linkImg: string,
-      tags: arrayOf(string),
+      tags: oneOfType([
+        string,
+        arrayOf(string),
+      ]),
       referral: string,
     })),
   }),

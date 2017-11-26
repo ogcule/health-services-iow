@@ -6,7 +6,6 @@ import Subtitle from './../shared/Subtitle';
 import OpenFormBtn from './../shared/OpenFormBtn';
 import ServiceForm from './ServiceForm';
 import SuccessMessage from './../shared/SuccessMessage';
-import ErrorMsg from './../shared/ErrorMsg';
 import FilteredView from './FilteredView';
 import Categories from './Categories';
 import { serviceInfoType, filterType } from './../../types/index';
@@ -15,7 +14,6 @@ import { serviceInfoType, filterType } from './../../types/index';
 const ServicesPage = props => (
   <div className={styles.servicesBox}>
     <Subtitle subtitle="Services" />
-    {props.errorSubmit && <ErrorMsg msg="Oops, error when trying to submit service!" />}
     {props.message && <SuccessMessage />}
     <div className={styles.toolBar}>
       <h2>{props.filter.category}</h2>
@@ -31,6 +29,7 @@ const ServicesPage = props => (
       handleSubmit={props.handleSubmit}
       values={props.values}
       errorMsg={props.errorMsg}
+      errorSubmit={props.errorSubmit}
     />}
     <div className={styles.innerContainer}>
       {!props.filteredView ? <Categories

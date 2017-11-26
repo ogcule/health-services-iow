@@ -29,6 +29,7 @@ const getServicesByTags = (req, res, next) => {
 
 const createService = (req, res, next) => {
   let newService = req.body;
+  newService.tags = typeof(newService.tags) === 'string' ? newService.tags : newService.tags.join(', ');
   // use db.none if no returning data or use db.one if using returning data
   db.one('INSERT INTO service(name, category, description, image, link, email, telephone, address, rcgp, postcode, tags, referral) values($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING id',
     [newService.name,
@@ -41,7 +42,7 @@ const createService = (req, res, next) => {
      newService.address,
      newService.rcgpCategory,
      newService.postcode,
-     newService.tags,
+     `{${newService.tags}}`,
      newService.referral,
     ])
     .then((data) => {

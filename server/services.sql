@@ -21,7 +21,7 @@ CREATE TABLE service (
 
 INSERT INTO service (image, name, address, telephone, email, category, description, link, rcgp, postcode, tags, referral)
   VALUES (
-    'not available',
+    'http://res.cloudinary.com/deyh3ywme/image/upload/v1511615182/img_service_cwof3o.png',
      'not available',
      'not available',
      '111111111111',

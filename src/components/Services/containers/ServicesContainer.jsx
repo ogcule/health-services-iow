@@ -70,6 +70,19 @@ class ServicesContainer extends React.Component {
         }
       });
   }
+  getFilteredCategory(category) {
+    apiServices.requestGetCategory(category)
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          loaded: true,
+          filter: {
+            filteredServices: data,
+            category,
+          },
+        });
+      });
+  }
   // handler to change state for expanding the questions form
   handleFormChange() {
     this.setState(prevState => ({ expanded: !prevState.expanded }));
@@ -85,17 +98,7 @@ class ServicesContainer extends React.Component {
     e.preventDefault();
     const { target } = e;
     const category = target.getAttribute('data-category');
-    apiServices.requestGetCategory(category)
-      .then((data) => {
-        console.log(data);
-        this.setState({
-          loaded: true,
-          filter: {
-            filteredServices: data,
-            category,
-          },
-        });
-      });
+    this.getFilteredCategory(category);
     this.handleFilterChange();
   }
   // handler for changing state from input values on the form
@@ -105,6 +108,7 @@ class ServicesContainer extends React.Component {
       value, name, type, options,
     } = target;
     /* Dealing with multiple select dropdown menu */
+    console.log('type:', type);
     if (type === 'select-multiple') {
       const selectedOptions = [];
       Object.values(options).map((option) => {
@@ -187,6 +191,7 @@ class ServicesContainer extends React.Component {
         weblink: '',
         image: '',
       },
+      errorSubmit: false,
     });
   }
   handleSubmit(e) {
@@ -228,6 +233,10 @@ class ServicesContainer extends React.Component {
         /* if id (number) returned then successful submission
         and can reload services and clear form, show message */
         if (typeof results === 'number') {
+          console.log(this.state.filter.category);
+          if (this.state.filter.category) {
+            this.getFilteredCategory(this.state.filter.category);
+          }
           this.handleClearForm();
           this.handleClearErrorMsg();
           this.handleMessageChange();

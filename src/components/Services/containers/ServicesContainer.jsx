@@ -39,6 +39,7 @@ class ServicesContainer extends React.Component {
         email: '',
         weblink: '',
         image: '',
+        tags: '',
       },
     };
     this.handleFormChange = this.handleFormChange.bind(this);
@@ -142,11 +143,12 @@ class ServicesContainer extends React.Component {
         email: '',
         weblink: '',
         postcode: '',
-        tags: ['Cardiovascular Health'],
+        tags: [],
         referral: '',
       },
       filter: {
         category: '',
+        tags: '',
         filteredServices: [],
       },
       errorMsg: {
@@ -157,6 +159,7 @@ class ServicesContainer extends React.Component {
         email: '',
         weblink: '',
         image: '',
+        tags: '',
       },
       filteredView: false,
       loaded: false,
@@ -175,7 +178,7 @@ class ServicesContainer extends React.Component {
         email: '',
         weblink: '',
         postcode: '',
-        tags: ['Cardiovascular Health'],
+        tags: [],
         referral: '',
       },
     });
@@ -190,6 +193,7 @@ class ServicesContainer extends React.Component {
         email: '',
         weblink: '',
         image: '',
+        tags: '',
       },
       errorSubmit: false,
     });
@@ -212,6 +216,7 @@ class ServicesContainer extends React.Component {
             email = '',
             weblink = '',
             image = '',
+            tags = '',
           } = data;
           this.setState({
             errorMsg: {
@@ -223,6 +228,7 @@ class ServicesContainer extends React.Component {
               email,
               weblink,
               image,
+              tags,
             },
           });
           return this.state.errorMsg;

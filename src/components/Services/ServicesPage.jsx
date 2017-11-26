@@ -5,7 +5,6 @@ import Subtitle from './../shared/Subtitle';
 // import AllServices from './AllServices';
 import OpenFormBtn from './../shared/OpenFormBtn';
 import ServiceForm from './ServiceForm';
-import SuccessMessage from './../shared/SuccessMessage';
 import FilteredView from './FilteredView';
 import Categories from './Categories';
 import { serviceInfoType, filterType } from './../../types/index';
@@ -14,7 +13,6 @@ import { serviceInfoType, filterType } from './../../types/index';
 const ServicesPage = props => (
   <div className={styles.servicesBox}>
     <Subtitle subtitle="Services" />
-    {props.message && <SuccessMessage />}
     <div className={styles.toolBar}>
       <h2>{props.filter.category}</h2>
       {props.filter.category && <button
@@ -30,6 +28,7 @@ const ServicesPage = props => (
       values={props.values}
       errorMsg={props.errorMsg}
       errorSubmit={props.errorSubmit}
+      message={props.message}
     />}
     <div className={styles.innerContainer}>
       {!props.filteredView ? <Categories
@@ -38,6 +37,7 @@ const ServicesPage = props => (
       <FilteredView
         loaded={props.loaded}
         filter={props.filter}
+        handleInputChange={props.handleInputChange}
       />
         }
     </div>

@@ -8,7 +8,7 @@ export default {
       .catch(error => console.log(error));
   },
   requestGetTags(tag) {
-    return axios.get(`/api/service/${tag}`)
+    return axios.get(`/api/service/tags/${tag}`)
       .then(response => response.data)
       .catch(error => console.log(error));
   },

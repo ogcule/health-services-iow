@@ -4,7 +4,7 @@ import { getAllFaq, getFaq, createFaq, updateFaq, removeFaq } from './faqControl
 
 const routes = (app) => {
   app.get('/api/service/categories/:category', services.getServicesByCategory);
-  app.get('/api/service/:tags', services.getServicesByTags);
+  app.get('/api/service/tags/:tag', services.getServicesByTags);
   app.get('/api/service', (req, res) => console.log('All services called', req.params.category));
   app.post('/api/service', [
     check('name', 'Please enter a name for the service').isLength({ min: 1 }),
@@ -16,6 +16,7 @@ const routes = (app) => {
     check('postcode').matches(/^[a-zA-Z]{1,2}([0-9]{1,2}|[0-9][a-zA-Z])\s*[0-9][a-zA-Z]{2}$/).withMessage('Please provide a postcode'),
     check('weblink', 'Use correct URL').isURL(),
     check('image', 'Use correct URL').isURL(),
+    check('tags', 'Please select at least one tag').exists(),
   ], (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {

@@ -47,6 +47,7 @@ const serviceInfoType = shape({
 
 const filterType = shape({
   category: string,
+  tags: string,
   filteredServices: arrayOf(shape({
     id: number,
     name: string,
@@ -88,6 +89,7 @@ const handleClearAllType = shape({
   }),
   filter: shape({
     category: string,
+    tags: string,
     filteredServices: arrayOf(shape({
       id: number,
       name: string,
@@ -116,6 +118,7 @@ const handleClearAllType = shape({
     email: string,
     weblink: string,
     image: string,
+    tags: string,
   }),
   filteredView: bool,
   loaded: bool,

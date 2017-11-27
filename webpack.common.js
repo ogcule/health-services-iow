@@ -57,9 +57,13 @@ module.exports = {
       }
     }
   ]
-}
-    ]
-    },
+},
+    {
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
+    }
+  ]
+  },
     plugins: [
       new HtmlWebpackPlugin({
         template: 'src/index.html'

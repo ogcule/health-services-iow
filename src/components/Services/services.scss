@@ -156,16 +156,30 @@ span {
   h2 {
     padding: 0;
     margin: 0;
-    flex: 2;
+    flex: 6;
   }
-  .backBtn {
-    height: 18px;
-    width: 24px;
-    @include reset-button(1.2em);
-    background: center no-repeat;
-    background-size: contain;
-    background-image: url('./../../images/left.png');
-  }
+}
+.toolBarBtns {
+  flex: 1 0 ;
+  min-width: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+.backBtn {
+  height: 24px;
+  width: 24px;
+  @include reset-button(1.2em);
+  background: center no-repeat;
+  background-size: contain;
+  background-image: url('./../../images/left.png');
+}
+.reloadBtn {
+  height: 24px;
+  width: 24px;
+  @include reset-button(1.2em);
+  background: center no-repeat;
+  background-size: contain;
+  background-image: url('./../../images/reload.png');
 }
 // NoServices
 .noServices {
@@ -195,6 +209,11 @@ svg {
   padding: 5px 0 0 3px;
   box-sizing: border-box;
   font-size: 0.6em;
+}
+.filterByTags {
+    span, label, input {
+      margin: 5px;
+  }
 }
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
 @media only screen

@@ -48,6 +48,7 @@ const serviceInfoType = shape({
 const filterType = shape({
   category: string,
   tags: string,
+  loaded: bool,
   filteredServices: arrayOf(shape({
     id: number,
     name: string,

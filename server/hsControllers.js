@@ -19,7 +19,17 @@ const getServicesByCategory = (req, res, next) => {
 }
 // get services by tags, searches for service with tag anywhere in tags array
 const getServicesByTags = (req, res, next) => {
-  db.any('SELECT * FROM service WHERE $1 = ANY (tags)', req.params.tags)
+  db.any('SELECT * FROM service WHERE $1 = ANY (tags)', req.params.tag)
+    .then((data) => {
+    res.status(200).json(data);
+  }).catch((err) => {
+    return next(err);
+  });
+}
+// search by both category and tags
+const getServicesByBoth = (req, res, next) => {
+  db.any('SELECT * FROM service WHERE category = $1 AND $2 = ANY (tags)',
+  [req.params.category, req.params.tag])
     .then((data) => {
     res.status(200).json(data);
   }).catch((err) => {
@@ -85,4 +95,12 @@ const removeService = (req, res, next) => {
       return next(err);
     });
 }
-export {getAllServices, createService, updateService, removeService, getServicesByCategory, getServicesByTags};
+export {
+  getAllServices,
+  createService,
+  updateService,
+  removeService,
+  getServicesByCategory,
+  getServicesByTags,
+  getServicesByBoth,
+};

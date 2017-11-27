@@ -38,17 +38,19 @@ const rcgpCurriculum = [
 const tags = [
   'Acutely ill', // red
   'Cardiovascular', // blue
-  'Drug/Alcohol',
-  'End-of-Life',
-  'ENT/Oral/Facial',
+  'Drugs and Alcohol',
+  'End of Life',
+  'ENT',
   'Eyes',
   'Gastroenterology',
   'Genetics',
   'GUM',
+  'Mental Health',
   'Metabolic',
   'Musculoskeletal',
   'Neurological',
   'Older adults',
+  'Oral and Facial',
   'Paediatrics',
   'Respiratory',
   'Skin',

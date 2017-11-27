@@ -6,6 +6,8 @@ import Subtitle from './../shared/Subtitle';
 import OpenFormBtn from './../shared/OpenFormBtn';
 import ServiceForm from './ServiceForm';
 import FilteredView from './FilteredView';
+import Reload from './Reload';
+import Back from './Back';
 import Categories from './Categories';
 import { serviceInfoType, filterType } from './../../types/index';
 // import { allServicesType } from './../../types/index';
@@ -15,10 +17,15 @@ const ServicesPage = props => (
     <Subtitle subtitle="Services" />
     <div className={styles.toolBar}>
       <h2>{props.filter.category}</h2>
-      {props.filter.category && <button
-        className={styles.backBtn}
-        onClick={props.handleClearAll}
-      />}
+      {props.filter.category && (
+        <div className={styles.toolBarBtns}>
+          <Back handleClearAll={props.handleClearAll} />
+          <Reload
+            handleFilterClick={props.handleFilterClick}
+            filter={props.filter}
+          />
+        </div>
+      )}
       <OpenFormBtn text="" openForm={props.handleFormChange} />
     </div>
     {props.expanded && <ServiceForm
@@ -38,6 +45,7 @@ const ServicesPage = props => (
         loaded={props.loaded}
         filter={props.filter}
         handleInputChange={props.handleInputChange}
+        handleSubmitTags={props.handleSubmitTags}
       />
         }
     </div>
@@ -55,6 +63,7 @@ ServicesPage.propTypes = {
   handleFilterClick: PropTypes.func,
   handleSubmit: PropTypes.func,
   handleClearAll: PropTypes.func,
+  handleSubmitTags: PropTypes.func,
   values: serviceInfoType,
   expanded: PropTypes.bool,
   message: PropTypes.bool,
@@ -71,6 +80,7 @@ ServicesPage.defaultProps = {
   handleFilterClick: null,
   handleClearAll: null,
   handleSubmit: null,
+  handleSubmitTags: null,
   expanded: false,
   values: {},
   errorMsg: {},

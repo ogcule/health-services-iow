@@ -8,7 +8,13 @@ export default {
       .catch(error => console.log(error));
   },
   requestGetTags(tag) {
+    console.log(tag);
     return axios.get(`/api/service/tags/${tag}`)
+      .then(response => response.data)
+      .catch(error => console.log(error));
+  },
+  requestGetBoth(category, tag) {
+    return axios.get(`/api/service/categories/${category}/tags/${tag}`)
       .then(response => response.data)
       .catch(error => console.log(error));
   },

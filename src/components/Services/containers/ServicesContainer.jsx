@@ -15,7 +15,9 @@ class ServicesContainer extends React.Component {
       filteredView: false,
       filter: {
         category: '',
+        tags: 'Acutely ill',
         filteredServices: [],
+        loaded: false,
       },
       values: {
         image: '',
@@ -51,38 +53,59 @@ class ServicesContainer extends React.Component {
     this.handleFilterClick = this.handleFilterClick.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.handleClearAll = this.handleClearAll.bind(this);
-  }
-  componentDidMount() {
-    // this.getAllServices();
-  }
-  // function that call that gets all service information
-  getAllServices() {
-    apiServices.requestGetAll()
-      .then((data) => {
-        if (data) {
-          this.setState({
-            allServices: data,
-            loaded: true,
-          });
-        } else {
-          this.setState({
-            loaded: false,
-          });
-        }
-      });
+    this.handleSubmitTags = this.handleSubmitTags.bind(this);
   }
   getFilteredCategory(category) {
     apiServices.requestGetCategory(category)
       .then((data) => {
         console.log(data);
-        this.setState({
-          loaded: true,
-          filter: {
-            filteredServices: data,
-            category,
-          },
-        });
+        this.setState(prevState => ({
+          filter: Object.assign(
+            {},
+            prevState.filter,
+            {
+              filteredServices: data,
+              category,
+              loaded: true,
+            },
+          ),
+        }));
       });
+  }
+  getFilteredTags(tags) {
+    apiServices.requestGetTags(tags)
+      .then((data) => {
+        console.log(data);
+        this.setState(prevState => ({
+          filter: Object.assign(
+            {},
+            prevState.filter,
+            {
+              filteredServices: data,
+              tags,
+              loaded: true,
+            },
+          ),
+        }));
+      });
+  }
+  getFilteredBoth(category, tags) {
+    apiServices.requestGetBoth(category, tags)
+      .then((data) => {
+        this.setState(prevState => ({
+          filter: Object.assign(
+            {},
+            prevState.filter,
+            {
+              filteredServices: data,
+              tags,
+              category,
+              loaded: true,
+            },
+          ),
+        }));
+      })
+      .catch(err => console.log(err.message));
   }
   // handler to change state for expanding the questions form
   handleFormChange() {
@@ -92,41 +115,53 @@ class ServicesContainer extends React.Component {
   handleMessageChange() {
     this.setState(prevState => ({ message: !prevState.message }));
   }
+  // handler to change the filtered view on and off
   handleFilterChange() {
     this.setState(prevState => ({ filteredView: !prevState.filteredView }));
   }
+  /* handler for calling a get request for all services by category
+  when a click event occurs */
   handleFilterClick(e) {
     e.preventDefault();
     const { target } = e;
     const category = target.getAttribute('data-category');
     this.getFilteredCategory(category);
-    this.handleFilterChange();
+    if (!this.state.filter.category) {
+      this.handleFilterChange();
+    }
   }
-  // handler for changing state from input values on the form
+  // handler for changing state from input values on the forms
   handleInputChange(event) {
     const { target } = event;
     const {
       value, name, type, options,
     } = target;
     /* Dealing with multiple select dropdown menu */
-    console.log('type:', type);
-    if (type === 'select-multiple') {
-      const selectedOptions = [];
-      Object.values(options).map((option) => {
-        console.log(option.selected);
-        if (option.selected) {
-          selectedOptions.push(option.value);
-          console.log('selectedOptions', selectedOptions);
-        }
-        return selectedOptions;
-      });
-      /* using object.assign and previous state so keeping object shape and not making a new one */
-      this.setState(prevState => (
-        { values: Object.assign({}, prevState.values, { [name]: selectedOptions }) }
-      ));
+    // So I can use this handler for several forms based on name
+    if (name !== 'tags-filter') {
+      /* Dealing with multiple select dropdown menu */
+      if (type === 'select-multiple') {
+        const selectedOptions = [];
+        Object.values(options).map((option) => {
+          console.log(option.selected);
+          if (option.selected) {
+            selectedOptions.push(option.value);
+          }
+          return selectedOptions;
+        });
+        /* using object.assign and previous state so keeping object shape
+        and not making a new one */
+        this.setState(prevState => (
+          { values: Object.assign({}, prevState.values, { [name]: selectedOptions }) }
+        ));
+      } else {
+        this.setState(prevState => (
+          { values: Object.assign({}, prevState.values, { [name]: value }) }
+        ));
+      }
     } else {
       this.setState(prevState => (
-        { values: Object.assign({}, prevState.values, { [name]: value }) }
+        { filter: Object.assign({}, prevState.filter, { tags: value }) }
       ));
     }
   }
@@ -148,8 +183,9 @@ class ServicesContainer extends React.Component {
       },
       filter: {
         category: '',
-        tags: '',
+        tags: 'Acutely ill',
         filteredServices: [],
+        loaded: false,
       },
       errorMsg: {
         name: '',
@@ -239,7 +275,6 @@ class ServicesContainer extends React.Component {
         /* if id (number) returned then successful submission
         and can reload services and clear form, show message */
         if (typeof results === 'number') {
-          console.log(this.state.filter.category);
           if (this.state.filter.category) {
             this.getFilteredCategory(this.state.filter.category);
           }
@@ -258,6 +293,10 @@ class ServicesContainer extends React.Component {
         console.log(error);
       });
   }
+  handleSubmitTags(e) {
+    e.preventDefault();
+    this.getFilteredBoth(this.state.filter.category, this.state.filter.tags);
+  }
   render() {
     return (
       <ServicesPage
@@ -268,6 +307,7 @@ class ServicesContainer extends React.Component {
         handleInputChange={this.handleInputChange}
         handleFilterClick={this.handleFilterClick}
         handleFilterChange={this.handleFilterChange}
+        handleSubmitTags={this.handleSubmitTags}
         handleClearAll={this.handleClearAll}
         message={this.state.message}
         handleSubmit={this.handleSubmit}

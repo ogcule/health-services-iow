@@ -6,12 +6,16 @@ import FilterByTags from './FilterByTags';
 import { filterType } from './../../types/index';
 
 const FilteredView = (props) => {
-  if (!props.loaded) {
+  if (!props.filter.loaded) {
     return <p>.....Loading</p>;
   }
   return (
     <div>
-      <FilterByTags filter={props.filter} handleInputChange={props.handleInputChange} />
+      <FilterByTags
+        filter={props.filter}
+        handleInputChange={props.handleInputChange}
+        handleSubmitTags={props.handleSubmitTags}
+      />
       {props.filter.filteredServices.length === 0 ? <NoServices /> :
       props.filter.filteredServices.map(serviceInfo =>
         (<Service key={serviceInfo.id} serviceInfo={serviceInfo} />))
@@ -24,11 +28,13 @@ FilteredView.propTypes = {
   filter: filterType,
   loaded: PropTypes.bool,
   handleInputChange: PropTypes.func,
+  handleSubmitTags: PropTypes.func,
 };
 FilteredView.defaultProps = {
   filter: null,
   loaded: false,
   handleInputChange: null,
+  handleSubmitTags: null,
 };
 
 export default FilteredView;

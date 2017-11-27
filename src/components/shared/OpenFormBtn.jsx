@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './shared.scss';
 
 const OpenFormBtn = props => (
-  <div className={styles.add}>
+  <div className={styles.addBtn}>
     <button className={styles.addBtn} onClick={props.openForm} />
   </div>
 );

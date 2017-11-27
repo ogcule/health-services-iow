@@ -17,15 +17,6 @@ const ServiceForm = props => (
       <form method="post" onSubmit={props.handleSubmit} noValidate>
         <legend>Add a service</legend>
         <p className={styles.required}>* Required</p>
-        <label htmlFor="rcgp">
-          <span className={styles.required}>*</span> Category (RCGP):
-      <select id="rcgp" name="rcgpCategory" value={props.values.rcgpCategory} onChange={props.handleInputChange}>
-        {rcgpCurriculum.map(heading => (
-          <option key={Object.keys(heading)[0]} value={heading[Object.keys(heading)[0]]}>
-            {heading[Object.keys(heading)[0]]}
-          </option>))}
-      </select>
-        </label>
         <label htmlFor="category">
           <span className={styles.required}>*</span> Category:
         <select id="category" value={props.values.category} name="category" onChange={props.handleInputChange}>
@@ -41,6 +32,15 @@ const ServiceForm = props => (
         <TagsMenu values={props.values} handleInputChange={props.handleInputChange} />
         </label>
         {props.errorMsg.tags && <ErrorMsg msg={props.errorMsg.tags} />}
+        <label htmlFor="rcgp">
+          <span className={styles.required}>*</span> Category (RCGP):
+      <select id="rcgp" name="rcgpCategory" value={props.values.rcgpCategory} onChange={props.handleInputChange}>
+        {rcgpCurriculum.map(heading => (
+          <option key={Object.keys(heading)[0]} value={heading[Object.keys(heading)[0]]}>
+            {heading[Object.keys(heading)[0]]}
+          </option>))}
+      </select>
+        </label>
         <label htmlFor="name">
           <span className={styles.required}>*</span> Name of Service:
           <input id="name" name="name" type="text" value={props.values.name} onChange={props.handleInputChange} />
@@ -79,11 +79,6 @@ const ServiceForm = props => (
           <input id="weblink" type="url" name="weblink" value={props.values.weblink} placeholder="https://www.servicewebsite.com" onChange={props.handleInputChange} />
         </label>
         {props.errorMsg.weblink && <ErrorMsg msg={props.errorMsg.weblink} />}
-        <label htmlFor="image">
-          URL of image:
-          <input id="image" type="url" name="image" value={props.values.image} placeholder="https://link-to-related-image.com" onChange={props.handleInputChange} />
-        </label>
-        {props.errorMsg.image && <ErrorMsg msg={props.errorMsg.image} />}
         <div className={styles.formBtn}>
           <button type="submit" >Submit</button>
         </div>

@@ -27,7 +27,7 @@ export default function defaultFormValues(values) {
         case 'description':
           return '';
         case 'image':
-          return 'http://res.cloudinary.com/deyh3ywme/image/upload/v1511615182/img_service_cwof3o.png';
+          return 'https://res.cloudinary.com/deyh3ywme/image/upload/v1511615182/img_service_cwof3o.png';
         case 'telephone':
           return '';
         case 'email':

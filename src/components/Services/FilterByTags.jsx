@@ -5,10 +5,10 @@ import { tags } from './../../data/categories';
 import { filterType } from './../../types/index';
 
 const FilterByTags = props => (
-  <form method="post" onSubmit={props.handleSubmitTags} className={styles.filterByTags} >
+  <form method="get" onSubmit={props.handleSubmitTags} className={styles.filterByTags} >
     <label htmlFor="tags">
-      <span>Filter by tags: </span>
-      <select id="tags" value={props.filter.tags} name="tags-filter" onChange={props.handleInputChange} >
+      <span>Filter by tags {props.filter.category && `in ${props.filter.category}`}: </span>
+      <select id="tags" value={props.filter.tags} data-forms="filter" name="tags" onChange={props.handleInputChange} >
         {tags.map(tag => (
           <option key={tag} value={tag}>
             {tag}

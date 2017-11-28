@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './services.scss';
 import Subtitle from './../shared/Subtitle';
-// import AllServices from './AllServices';
 import OpenFormBtn from './../shared/OpenFormBtn';
 import ServiceForm from './ServiceForm';
 import FilteredView from './FilteredView';
+import FilterByTags from './FilterByTags';
 import Reload from './Reload';
 import Back from './Back';
 import Categories from './Categories';
+import Search from './Search';
 import { serviceInfoType, filterType } from './../../types/index';
-// import { allServicesType } from './../../types/index';
 
 const ServicesPage = props => (
   <div className={styles.servicesBox}>
@@ -27,6 +27,11 @@ const ServicesPage = props => (
         </div>
       )}
       <OpenFormBtn text="" openForm={props.handleFormChange} />
+      <Search
+        filter={props.filter}
+        handleInputChange={props.handleInputChange}
+        handleSearchClick={props.handleSearchClick}
+      />
     </div>
     {props.expanded && <ServiceForm
       closeForm={props.handleFormChange}
@@ -37,8 +42,13 @@ const ServicesPage = props => (
       errorSubmit={props.errorSubmit}
       message={props.message}
     />}
+    <FilterByTags
+      filter={props.filter}
+      handleInputChange={props.handleInputChange}
+      handleSubmitTags={props.handleSubmitTags}
+    />
     <div className={styles.innerContainer}>
-      {!props.filteredView ? <Categories
+      {!props.filter.filteredView ? <Categories
         handleFilterClick={props.handleFilterClick}
       /> :
       <FilteredView
@@ -64,6 +74,7 @@ ServicesPage.propTypes = {
   handleSubmit: PropTypes.func,
   handleClearAll: PropTypes.func,
   handleSubmitTags: PropTypes.func,
+  handleSearchClick: PropTypes.func,
   values: serviceInfoType,
   expanded: PropTypes.bool,
   message: PropTypes.bool,
@@ -81,6 +92,7 @@ ServicesPage.defaultProps = {
   handleClearAll: null,
   handleSubmit: null,
   handleSubmitTags: null,
+  handleSearchClick: null,
   expanded: false,
   values: {},
   errorMsg: {},

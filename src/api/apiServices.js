@@ -23,6 +23,11 @@ export default {
       .then(response => response.data)
       .catch(error => console.log(error));
   },
+  requestGetSearch(search) {
+    return axios.get(`/api/service/search/${search}`)
+      .then(response => response.data)
+      .catch(error => console.log(error));
+  },
   requestPost(
     name,
     category,

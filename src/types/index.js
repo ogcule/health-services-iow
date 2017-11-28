@@ -91,6 +91,8 @@ const handleClearAllType = shape({
   filter: shape({
     category: string,
     tags: string,
+    search: string,
+    filteredView: bool,
     filteredServices: arrayOf(shape({
       id: number,
       name: string,

@@ -211,8 +211,39 @@ svg {
   font-size: 0.6em;
 }
 .filterByTags {
+  align-self: flex-start;
+  margin-left: 10%;
     span, label, input {
       margin: 5px;
+  }
+}
+.searchBox {
+  flex: 1;
+  display: flex;
+  height: 30px;
+  button {
+    flex: 2;
+    @include reset-button(1.2em);
+    border: 2px solid $base;
+    padding:5px;
+    height: 26px;
+    min-width: 30px;
+    background: $base url('./../../images/search-white.png') no-repeat center;
+    background-size: contain;
+    border-radius: 0 5px 5px 0;
+  }
+  input[type="text"] {
+    font-style: $text;
+    font-size: 1em;
+    flex:8;
+    margin-right:0;
+    height: 26px;
+    border-radius: 5px 0 0 5px;
+    padding: 5px;
+    border: 2px solid $base;
+    &:focus {
+      color: $base;
+    }
   }
 }
 /* ----------- iPhone 6, 6S, 7 and 8 ----------- */
@@ -227,5 +258,8 @@ svg {
     }
     .toolBar {
       width:100%;
+    }
+    .filterByTags {
+      margin-left:0;
     }
 }

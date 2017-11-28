@@ -6,6 +6,7 @@ const routes = (app) => {
   app.get('/api/service/categories/:category', services.getServicesByCategory);
   app.get('/api/service/tags/:tag', services.getServicesByTags);
   app.get('/api/service/categories/:category/tags/:tag', services.getServicesByBoth);
+  app.get('/api/service/search/:search', services.getFullText);
   app.get('/api/service', (req, res) => console.log('All services called', req.params.category));
   app.post('/api/service', [
     check('name', 'Please enter a name for the service').isLength({ min: 1 }),

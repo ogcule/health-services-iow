@@ -35,6 +35,16 @@ INSERT INTO service (image, name, address, telephone, email, category, descripti
      'not available'
    );
 
+ALTER TABLE service ADD tsv TSVector;
+
+CREATE TRIGGER TS_tsv
+  BEFORE INSERT OR UPDATE ON service
+FOR EACH ROW EXECUTE PROCEDURE
+  tsvector_update_trigger(tsv, 'pg_catalog.english', name, address, email, category, description, postcode, referral);
+
+CREATE INDEX tsv_GIN ON service
+  USING GIN(tsv);
+
   DROP TABLE IF EXISTS faq;
   CREATE TABLE faq
   (

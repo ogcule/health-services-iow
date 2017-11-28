@@ -36,6 +36,16 @@ const getServicesByBoth = (req, res, next) => {
     return next(err);
   });
 }
+// search using full text search
+const getFullText = (req, res, next) => {
+  db.any('SELECT * FROM service WHERE tsv @@ to_tsquery(\'english\', $1)',
+  req.params.search)
+  .then((data) => {
+  res.status(200).json(data);
+}).catch((err) => {
+  return next(err);
+});
+}
 
 const createService = (req, res, next) => {
   let newService = req.body;
@@ -103,4 +113,5 @@ export {
   getServicesByCategory,
   getServicesByTags,
   getServicesByBoth,
+  getFullText,
 };

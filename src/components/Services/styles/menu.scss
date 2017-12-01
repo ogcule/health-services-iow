@@ -1,0 +1,47 @@
+@import "../../../styles/colors";
+@import "../../../styles/buttons";
+@import "../../../styles/fonts";
+@import "../../../styles/container";
+@import "../../../styles/keyframes";
+.categories-menu-container {
+  position: absolute;
+  top: 65px;
+  left: 0;
+}
+.categories-menu {
+  position: relative;
+  width: 150px;
+  height: 35px;
+  top: 0;
+  left: 0;
+  transition: width 1s, height 1s;
+  overflow: scroll;
+}
+.categories-menu.show{
+  width: 300px;
+  height: 500px;
+}
+.categories-menu.hide {
+  width: 150px;
+  height: 35px;
+}
+.tags-menu-container {
+    position: absolute;
+    top: 65px;
+    right: 50px;
+  }
+.tags-menu {
+  position: relative;
+  width: 120px;
+  height: 35px;
+  top: 0;
+  left: 0;
+  transition: height 1s, transform 1s, width 1s;
+  overflow: scroll;
+}
+
+.tags-menu.show {
+ height: 150px;
+ width: 200px;
+ // transform: translateX(-80px);
+}

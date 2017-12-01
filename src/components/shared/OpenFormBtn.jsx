@@ -4,7 +4,7 @@ import styles from './shared.scss';
 
 const OpenFormBtn = props => (
   <div className={styles.addBtn}>
-    <button className={styles.addBtn} onClick={props.openForm} />
+    <button onClick={props.openForm} />
   </div>
 );
 

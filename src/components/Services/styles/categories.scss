@@ -1,0 +1,20 @@
+@import '../../../styles/colors';
+@import '../../../styles/buttons';
+@import '../../../styles/fonts';
+@import '../../../styles/container';
+@import '../../../styles/keyframes';
+
+.categories-container {
+  background-color: white;
+}
+
+.categories {
+    li{
+      text-align: center;
+      padding: 1%;
+    }
+    button {
+      @include reset-button(1.2em);
+      color: $base;
+    }
+  }

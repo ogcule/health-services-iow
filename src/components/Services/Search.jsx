@@ -4,18 +4,21 @@ import styles from './services.scss';
 import { filterType } from './../../types/index';
 
 const Search = props => (
-  <form className={styles.searchBox} >
-    <input
-      type="text"
-      name="search"
-      data-forms="filter"
-      className={styles.searchTerm}
-      value={props.filter.search}
-      onChange={props.handleInputChange}
-      placeholder="Search..."
-    />
-    <button type="submit" onClick={props.handleSearchClick} />
-  </form>
+  <div className={styles.searchContainer}>
+    <form className={styles.searchBox} >
+      <input
+        type="text"
+        name="search"
+        data-forms="search"
+        className={styles.searchTerm}
+        value={props.filter.search}
+        onChange={props.handleInputChange}
+        placeholder="Search..."
+      />
+      <button type="submit" onClick={props.handleSearchClick} />
+    </form>
+    {props.filter.searchErr && <p style={{ color: 'red' }}>Error: Please enter text into search box</p>}
+  </div>
 );
 
 Search.propTypes = {

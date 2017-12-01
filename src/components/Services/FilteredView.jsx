@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Service from './Service';
 import NoServices from './NoServices';
+import styles from './styles/filterView.scss';
 import { filterType } from './../../types/index';
 
 const FilteredView = (props) => {
@@ -9,7 +10,7 @@ const FilteredView = (props) => {
     return <p>.....Loading</p>;
   }
   return (
-    <div>
+    <div className={styles['filter-view-container']}>
       {props.filter.filteredServices.length === 0 ? <NoServices /> :
       props.filter.filteredServices.map(serviceInfo =>
         (<Service key={serviceInfo.id} serviceInfo={serviceInfo} />))

@@ -1,0 +1,18 @@
+@import "../../../styles/colors";
+@import "../../../styles/buttons";
+@import "../../../styles/fonts";
+@import "../../../styles/container";
+@import "../../../styles/keyframes";
+.servicesBox {
+  @extend .outerBox;
+  /* to make up for the absolute positioned
+  menu */
+  padding-top: 45px;
+}
+.simpleContainer {
+  @extend .container;
+}
+.search-btn{
+  float: right;
+  background-color: red;
+}

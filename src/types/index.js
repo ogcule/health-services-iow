@@ -93,6 +93,7 @@ const handleClearAllType = shape({
     tags: string,
     search: string,
     filteredView: bool,
+    searchErr: bool,
     filteredServices: arrayOf(shape({
       id: number,
       name: string,

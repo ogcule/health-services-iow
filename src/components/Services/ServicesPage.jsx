@@ -1,80 +1,95 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './services.scss';
+import styles from './styles/servicesPage.scss';
 import Subtitle from './../shared/Subtitle';
 import OpenFormBtn from './../shared/OpenFormBtn';
 import ServiceForm from './ServiceForm';
 import FilteredView from './FilteredView';
 import FilterByTags from './FilterByTags';
-import Reload from './Reload';
-import Back from './Back';
+import CurrentView from './CurrentView';
+import OptionBtn from './../shared/OptionBtn';
+import Menu from './Menu';
+// import Reload from './Reload';
+// import Back from './Back';
 import Categories from './Categories';
+// import TagsBtn from './TagsBtn';
 import Search from './Search';
+import images from './../../utils/images';
 import { serviceInfoType, filterType } from './../../types/index';
 
 const ServicesPage = props => (
-  <div className={styles.servicesBox}>
-    <Subtitle subtitle="Services" />
-    <div className={styles.toolBar}>
-      <h2>{props.filter.category}</h2>
-      {props.filter.category && (
-        <div className={styles.toolBarBtns}>
-          <Back handleClearAll={props.handleClearAll} />
-          <Reload
-            handleFilterClick={props.handleFilterClick}
-            filter={props.filter}
-          />
-        </div>
-      )}
-      <OpenFormBtn text="" openForm={props.handleFormChange} />
+  <div className={styles.simpleContainer}>
+    <Menu
+      displayCategories={props.displayCategories}
+      tagMenu={props.tagMenu}
+      handleDisplayCategories={props.handleDisplayCategories}
+    >
+      <OptionBtn
+        text="Categories"
+        image={[images.listIcon, images.closeIcon]}
+        active={props.displayCategories}
+        clickHandler={props.handleDisplayCategories}
+      />
+      <Categories
+        handleFilterClick={props.handleFilterClick}
+        handleDisplayCategories={props.handleDisplayCategories}
+      />
+      <OptionBtn
+        text="Tags"
+        image={[images.tagIcon, images.tagClose]}
+        active={props.tagMenu}
+        clickHandler={props.handleTagMenu}
+      />
+      <FilterByTags
+        filter={props.filter}
+        handleInputChange={props.handleInputChange}
+      />
+      <button className={styles['search-btn']}>
+        <img src={images.search} alt="search" />
+      </button>
+    </Menu>
+    <div className={styles.servicesBox}>
+      <CurrentView
+        filter={props.filter}
+      >
+        <Subtitle subtitle="Services" />
+        <OpenFormBtn text="" openForm={props.handleFormChange} />
+      </CurrentView>
+      {!props.filter.filteredView &&
       <Search
         filter={props.filter}
         handleInputChange={props.handleInputChange}
         handleSearchClick={props.handleSearchClick}
-      />
-    </div>
-    {props.expanded && <ServiceForm
-      closeForm={props.handleFormChange}
-      handleInputChange={props.handleInputChange}
-      handleSubmit={props.handleSubmit}
-      values={props.values}
-      errorMsg={props.errorMsg}
-      errorSubmit={props.errorSubmit}
-      message={props.message}
-    />}
-    <FilterByTags
-      filter={props.filter}
-      handleInputChange={props.handleInputChange}
-      handleSubmitTags={props.handleSubmitTags}
-    />
-    <div className={styles.innerContainer}>
-      {!props.filter.filteredView ? <Categories
-        handleFilterClick={props.handleFilterClick}
-      /> :
-      <FilteredView
-        loaded={props.loaded}
-        filter={props.filter}
+      />}
+      {props.expanded && <ServiceForm
+        closeForm={props.handleFormChange}
         handleInputChange={props.handleInputChange}
-        handleSubmitTags={props.handleSubmitTags}
-      />
-        }
+        handleSubmit={props.handleSubmit}
+        values={props.values}
+        errorMsg={props.errorMsg}
+        errorSubmit={props.errorSubmit}
+        message={props.message}
+      />}
+      {props.filter.filteredView &&
+        <FilteredView
+          loaded={props.loaded}
+          filter={props.filter}
+          handleInputChange={props.handleInputChange}
+        />
+      }
     </div>
-    {/* <AllServices
-      allServices={props.allServices}
-      loaded={props.loaded}
-    /> */}
   </div>
 );
 ServicesPage.propTypes = {
   loaded: PropTypes.bool,
-  // allServices: allServicesType,
   handleFormChange: PropTypes.func,
   handleInputChange: PropTypes.func,
   handleFilterClick: PropTypes.func,
   handleSubmit: PropTypes.func,
-  handleClearAll: PropTypes.func,
-  handleSubmitTags: PropTypes.func,
+  // handleClearAll: PropTypes.func,
   handleSearchClick: PropTypes.func,
+  handleDisplayCategories: PropTypes.func,
+  handleTagMenu: PropTypes.func,
   values: serviceInfoType,
   expanded: PropTypes.bool,
   message: PropTypes.bool,
@@ -82,6 +97,8 @@ ServicesPage.propTypes = {
   errorMsg: PropTypes.objectOf(PropTypes.string),
   filter: filterType,
   filteredView: PropTypes.bool,
+  displayCategories: PropTypes.bool,
+  tagMenu: PropTypes.bool,
 };
 ServicesPage.defaultProps = {
   loaded: false,
@@ -89,10 +106,11 @@ ServicesPage.defaultProps = {
   handleFormChange: null,
   handleInputChange: null,
   handleFilterClick: null,
-  handleClearAll: null,
+  // handleClearAll: null,
   handleSubmit: null,
-  handleSubmitTags: null,
   handleSearchClick: null,
+  handleDisplayCategories: null,
+  handleTagMenu: null,
   expanded: false,
   values: {},
   errorMsg: {},
@@ -100,5 +118,7 @@ ServicesPage.defaultProps = {
   errorSubmit: false,
   filter: null,
   filteredView: false,
+  displayCategories: false,
+  tagMenu: false,
 };
 export default ServicesPage;

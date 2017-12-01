@@ -1,0 +1,67 @@
+@import '../../../styles/colors';
+@import '../../../styles/buttons';
+@import '../../../styles/fonts';
+@import '../../../styles/container';
+@import '../../../styles/keyframes';
+
+.outer-container {
+  background-color: lighten($base, 40%);
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1 0 auto;
+  padding: 5px;
+  width: 80%;
+  border: solid 1px $base;
+  margin-bottom: 5px;
+}
+.category {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+}
+.tag {
+  font-size: 1.2em;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}
+.breadcrumbs-container {
+  flex:1;
+  display: flex;
+  justify-content: center;
+}
+.breadcrumbs-trail-container {
+  flex:1;
+  display: flex;
+  justify-content:flex-start;
+}
+@media only screen
+and (max-width: 667px)
+and (orientation: portrait) {
+
+  .category,
+  .tag {
+    font-size: 1em;
+  }
+
+  .breadcrumbs-container {
+    align-items: center;
+    display: flex;
+    flex: 1;
+    flex-flow: column nowrap;
+}
+
+  .breadcrumbs-trail-container {
+    align-items: flex-start;
+    display: flex;
+    flex: 1;
+    flex-flow: column nowrap;
+    font-size: 1em;
+  }
+
+  .outer-container {
+    width: 100%;
+  }
+
+}

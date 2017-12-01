@@ -12,13 +12,16 @@ class ServicesContainer extends React.Component {
       expanded: false,
       message: false,
       errorSubmit: false,
+      displayCategories: false,
+      tagMenu: false,
       filter: {
         category: '',
-        tags: 'Acutely ill',
+        tags: '',
         filteredServices: [],
         search: '',
         loaded: false,
         filteredView: false,
+        searchErr: false,
       },
       values: {
         image: '',
@@ -54,10 +57,11 @@ class ServicesContainer extends React.Component {
     this.handleFilterClick = this.handleFilterClick.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.handleClearAll = this.handleClearAll.bind(this);
-    this.handleSubmitTags = this.handleSubmitTags.bind(this);
     this.handleSearchClick = this.handleSearchClick.bind(this);
+    this.handleDisplayCategories = this.handleDisplayCategories.bind(this);
+    this.handleTagMenu = this.handleTagMenu.bind(this);
   }
-  getFilteredCategory(category) {
+  getFilteredCategory(category, tags) {
     apiServices.requestGetCategory(category)
       .then((data) => {
         console.log(data);
@@ -68,6 +72,7 @@ class ServicesContainer extends React.Component {
             {
               filteredServices: data,
               category,
+              tags,
               loaded: true,
             },
           ),
@@ -77,7 +82,7 @@ class ServicesContainer extends React.Component {
   getFilteredTags(tags) {
     apiServices.requestGetTags(tags)
       .then((data) => {
-        console.log(data);
+        console.log('tag', data);
         this.setState(prevState => ({
           filter: Object.assign(
             {},
@@ -86,7 +91,7 @@ class ServicesContainer extends React.Component {
               filteredServices: data,
               tags,
               loaded: true,
-              filterView: true,
+              filteredView: true,
             },
           ),
         }));
@@ -95,6 +100,7 @@ class ServicesContainer extends React.Component {
   getFilteredBoth(category, tags) {
     apiServices.requestGetBoth(category, tags)
       .then((data) => {
+        console.log('both', data);
         this.setState(prevState => ({
           filter: Object.assign(
             {},
@@ -104,12 +110,18 @@ class ServicesContainer extends React.Component {
               tags,
               category,
               loaded: true,
-              filterView: true,
+              filteredView: true,
             },
           ),
         }));
       })
       .catch(err => console.log(err.message));
+  }
+  handleDisplayCategories() {
+    this.setState(prevState => ({ displayCategories: !prevState.displayCategories }));
+  }
+  handleTagMenu() {
+    this.setState(prevState => ({ tagMenu: !prevState.tagMenu }));
   }
   // handler to change state for expanding the questions form
   handleFormChange() {
@@ -137,63 +149,97 @@ class ServicesContainer extends React.Component {
     e.preventDefault();
     const { target } = e;
     const category = target.getAttribute('data-category');
-    this.getFilteredCategory(category);
+    this.getFilteredCategory(category, this.state.filter.tags);
     if (!this.state.filter.category) {
       this.handleFilterChange();
     }
   }
   handleSearchClick(e) {
     e.preventDefault();
-    apiServices.requestGetSearch(this.state.filter.search)
-      .then((data) => {
-        console.log(data);
+    if (this.state.filter.search) {
+      apiServices.requestGetSearch(this.state.filter.search)
+        .then((data) => {
+          console.log(data);
+          this.setState(prevState => ({
+            filter: Object.assign(
+              {},
+              prevState.filter,
+              {
+                filteredServices: data,
+                loaded: true,
+                filteredView: true,
+              },
+            ),
+          }));
+        })
+        .catch(err => console.log(err.message));
+    } else {
+      this.setState(prevState => ({
+        filter: Object.assign(
+          {},
+          prevState.filter,
+          {
+            searchErr: true,
+          },
+        ),
+      }));
+    }
+  }
+  // handler for changing state from input values on the forms
+  handleInputChange(e) {
+    e.preventDefault();
+    const { target } = e;
+    const {
+      value, name, type, options, dataset,
+    } = target;
+    /* switch to deal with multiple cases because onChange is also
+    submitting on the select Menu */
+    switch (true) {
+      case (dataset.forms === 'getTags') && (value === '') && (dataset.category !== ''):
+        this.getFilteredCategory(dataset.category, value);
+        break;
+      case (dataset.forms === 'getTags') && (value === ''):
         this.setState(prevState => ({
           filter: Object.assign(
             {},
             prevState.filter,
             {
-              filteredServices: data,
-              loaded: true,
-              filteredView: true,
+              filteredView: false,
+              tags: value,
             },
           ),
         }));
-      });
-    console.log(this.filter.filteredView);
-  }
-  // handler for changing state from input values on the forms
-  handleInputChange(event) {
-    const { target } = event;
-    const {
-      value, name, type, options, dataset,
-    } = target;
-    console.log(dataset.forms);
-    /* Dealing with multiple select dropdown menu */
-    // So I can use this handler for several forms based on name
-    if (dataset.forms === 'filter') {
-      this.setState(prevState => (
-        { filter: Object.assign({}, prevState.filter, { [name]: value }) }
-      ));
-    } else if (type === 'select-multiple') {
-      // logic for forms using the values state
-      /* Dealing with multiple select dropdown menu */
-      const selectedOptions = [];
-      Object.values(options).map((option) => {
-        console.log(option.selected);
-        if (option.selected) {
-          selectedOptions.push(option.value);
-        }
-        return selectedOptions;
-      });
-      /* using object.assign and previous state so keeping object shape
-      and not making a new one */
-      this.setState(prevState => (
-        { values: Object.assign({}, prevState.values, { [name]: selectedOptions }) }
-      ));
-    } else {
-      this.setState(prevState => (
-        { values: Object.assign({}, prevState.values, { [name]: value }) }
-      ));
+        break;
+      case (dataset.forms === 'getTags') && (dataset.category === ''):
+        this.getFilteredTags(value);
+        break;
+      case (dataset.forms === 'getTags') && (dataset.category !== ''):
+        this.getFilteredBoth(dataset.category, value);
+        break;
+      case dataset.forms === 'search':
+        console.log('search called');
+        this.setState(prevState => (
+          { filter: Object.assign({}, prevState.filter, { [name]: value }) }
+        ));
+        break;
+      case type === 'select-multiple': {
+        const selectedOptions = [];
+        Object.values(options).map((option) => {
+          console.log(option.selected);
+          if (option.selected) {
+            selectedOptions.push(option.value);
+          }
+          return selectedOptions;
+        });
+        this.setState(prevState => (
+          { values: Object.assign({}, prevState.values, { [name]: selectedOptions }) }
+        ));
+        break;
+      }
+      default:
+        this.setState(prevState => (
+          { values: Object.assign({}, prevState.values, { [name]: value }) }
+        ));
     }
   }
   handleClearAll() {
@@ -214,10 +260,11 @@ class ServicesContainer extends React.Component {
       },
       filter: {
         category: '',
-        tags: 'Acutely ill',
+        tags: '',
         filteredServices: [],
         filteredView: false,
         loaded: false,
+        searchErr: false,
       },
       errorMsg: {
         name: '',
@@ -324,10 +371,6 @@ class ServicesContainer extends React.Component {
         console.log(error);
       });
   }
-  handleSubmitTags(e) {
-    e.preventDefault();
-    this.getFilteredBoth(this.state.filter.category, this.state.filter.tags);
-  }
   render() {
     return (
       <ServicesPage
@@ -341,6 +384,8 @@ class ServicesContainer extends React.Component {
         handleSubmitTags={this.handleSubmitTags}
         handleClearAll={this.handleClearAll}
         handleSearchClick={this.handleSearchClick}
+        handleDisplayCategories={this.handleDisplayCategories}
+        handleTagMenu={this.handleTagMenu}
         message={this.state.message}
         handleSubmit={this.handleSubmit}
         values={this.state.values}
@@ -348,6 +393,8 @@ class ServicesContainer extends React.Component {
         errorSubmit={this.state.errorSubmit}
         filter={this.state.filter}
         filteredView={this.state.filteredView}
+        displayCategories={this.state.displayCategories}
+        tagMenu={this.state.tagMenu}
       />
     );
   }

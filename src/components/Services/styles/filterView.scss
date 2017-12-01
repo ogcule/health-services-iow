@@ -1,0 +1,18 @@
+@import "../../../styles/colors";
+@import "../../../styles/buttons";
+@import "../../../styles/fonts";
+@import "../../../styles/container";
+@import "../../../styles/keyframes";
+
+.filter-view-container {
+  @extend %inner-container;
+  flex: 20 0 auto;
+}
+
+@media only screen
+and (max-width: 667px)
+and (orientation: portrait) {
+  .filter-view-container {
+    width: 100%;
+  }
+}

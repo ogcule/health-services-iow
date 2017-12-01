@@ -1,23 +1,14 @@
 @import "../../styles/colors";
 @import "../../styles/fonts";
 @import "../../styles/buttons";
-.subtitle {
-  font-family: $heading;
-  font-size: 2.2em;
-  text-align: center;
-  margin: 0;
-  flex:0 1 auto;
-}
 .addBtn{
-    flex: 1;
-    float: right;
     button{
     @include reset-button(1.5em);
     height: 24px;
     width: 24px;
     background: center no-repeat;
     background-size: contain;
-    background-image: url('./../../images/add.png');
+    background-image: url('./../../images/post.png');
   }
 }
 .closebtn {

@@ -1,0 +1,43 @@
+@import '../../../styles/colors';
+@import '../../../styles/buttons';
+@import '../../../styles/fonts';
+@import '../../../styles/container';
+@import '../../../styles/keyframes';
+
+.tags-filter-menu {
+  background-color: white;
+  padding: 10px;
+  display:flex;
+  position: relative;
+  form {
+  flex:1;
+  }
+}
+
+.filter-by-tags {
+    span, label, input {
+      margin: 5px;
+  }
+}
+@keyframes growLeft {
+  0% {
+    height: 0px;
+    width: 0%;
+  }
+  100% {
+    height: 50px;
+    width: 50%;
+    background: lighten($base, 40%);
+  }
+}
+
+@keyframes fadeIn {
+ from {
+ opacity: 0;
+ visibility: hidden;
+ }
+ to {
+ opacity: 1;
+ visibility: visible;
+ }
+}

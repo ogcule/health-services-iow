@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './shared.scss';
+import styles from './styles/subtitle.scss';
 
-const Subtitle = props => <h2 className={styles.subtitle}>{props.subtitle}</h2>;
+const Subtitle = props => <h2 className={styles.subtitle}>{props.subtitle} </h2>;
 
 Subtitle.propTypes = {
   subtitle: PropTypes.string,

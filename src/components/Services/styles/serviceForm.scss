@@ -1,0 +1,55 @@
+@import '../../../styles/colors';
+@import '../../../styles/buttons';
+@import '../../../styles/fonts';
+@import '../../../styles/container';
+@import '../../../styles/keyframes';
+
+.transparent-bg{
+  @extend %transparent-bg;
+}
+
+.formContainerServices {
+  @extend %formContainer;
+  width: 80%;
+  margin: 5% auto 0 auto;
+form{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    background-color: $white;
+    align-items: flex-end;
+    border-radius: 5px;
+    padding: 5px;
+  label{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0.2rem 0;
+  }
+  legend {
+    align-self: center;
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  input, textarea, select, label {
+    font-size: 1.0em;
+    font-family: $text;
+  }
+  input, textarea, select {
+    width: 50%;
+    margin-left: 1rem;
+  }
+}
+}
+ul {
+  list-style-type: none;
+  width: 100%;
+}
+span {
+  padding-right: 5px;
+  float:left;
+  color: $base;
+  font-weight:600;
+}

@@ -5,14 +5,14 @@ import ServicesContainer from './../Services/containers/ServicesContainer';
 import Home from './../Home/Home';
 import FaqContainer from './../faq/containers/FaqContainer';
 import Title from './Title';
-import styles from './App.scss';
+import styles from './styles/appRoute.scss';
 import NotFoundPage from './../shared/NotFoundPage';
 
 const AppRoutes = () => (
   <Router>
     <div className={styles.container}>
       <Title />
-      <div className={styles.innerContainer}>
+      <div className={styles['inner-container']}>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/Services" component={ServicesContainer} />

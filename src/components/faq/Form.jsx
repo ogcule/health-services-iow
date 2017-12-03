@@ -5,7 +5,7 @@ import ErrorMsg from './../shared/ErrorMsg';
 import CloseFormBtn from './../shared/CloseFormBtn';
 
 const Form = props => (
-  <div className={styles.transparentBg}>
+  <div className={styles['transparent-bg']}>
     <div className={styles.formContainerFaq}>
       <CloseFormBtn closeForm={props.closeForm} />
       {props.errorSubmit && <ErrorMsg msg="Oops, error when trying to submit!" />}

@@ -1,0 +1,25 @@
+@import '../../../styles/colors';
+@import '../../../styles/buttons';
+@import '../../../styles/fonts';
+@import '../../../styles/container';
+@import '../../../styles/keyframes';
+
+.transparent-bg{
+  @extend %transparent-bg;
+  position: fixed;
+}
+
+.menu-container {
+  background-color: white;
+  display: flex;
+  width: 100%;
+  height: auto;
+  min-height: 50px;
+  padding-top: 5px;
+}
+
+.container {
+  width: 100%;
+  height: auto;
+  padding: -45px;
+}

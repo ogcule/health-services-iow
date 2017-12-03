@@ -1,18 +1,23 @@
-@import "../../../styles/colors";
-@import "../../../styles/buttons";
-@import "../../../styles/fonts";
-@import "../../../styles/container";
-@import "../../../styles/keyframes";
-.servicesBox {
-  @extend .outerBox;
-  /* to make up for the absolute positioned
-  menu */
-  padding-top: 45px;
+@import '../../../styles/colors';
+@import '../../../styles/buttons';
+@import '../../../styles/fonts';
+@import '../../../styles/container';
+@import '../../../styles/keyframes';
+
+.services-box {
+  @extend %outer-box;
 }
-.simpleContainer {
-  @extend .container;
+
+.simple-container {
+  @extend %container;
 }
+
 .search-btn{
-  float: right;
   background-color: red;
+  float: right;
+}
+
+.filler-div {
+  width: 100%;
+  min-height: 50px;
 }

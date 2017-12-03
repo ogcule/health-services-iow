@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './services.scss';
+import styles from './styles/serviceForm.scss';
 import CloseFormBtn from './../shared/CloseFormBtn';
 import ErrorMsg from './../shared/ErrorMsg';
 import SuccessMessage from './../shared/SuccessMessage';

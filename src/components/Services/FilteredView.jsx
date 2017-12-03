@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { bool } from 'prop-types';
 import Service from './Service';
 import NoServices from './NoServices';
 import styles from './styles/filterView.scss';
@@ -21,7 +21,7 @@ const FilteredView = (props) => {
 
 FilteredView.propTypes = {
   filter: filterType,
-  loaded: PropTypes.bool,
+  loaded: bool,
 };
 FilteredView.defaultProps = {
   filter: null,

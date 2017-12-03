@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { func } from 'prop-types';
 import { tags } from './../../data/categories';
 import { serviceInfoType } from './../../types/index';
 
@@ -13,7 +13,7 @@ const TagsMenu = props => (
 );
 
 TagsMenu.propTypes = {
-  handleInputChange: PropTypes.func,
+  handleInputChange: func,
   values: serviceInfoType,
 };
 TagsMenu.defaultProps = {

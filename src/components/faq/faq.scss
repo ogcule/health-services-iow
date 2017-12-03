@@ -3,17 +3,17 @@
 @import "../../styles/fonts";
 @import "../../styles/container";
 .faqBox{
-  @extend .outerBox;
+  @extend %outer-box;
 }
-.transparentBg {
-  @extend .transparentBg;
+.transparent-bg {
+  @extend %transparent-bg;
 }
 .faqBtnContainer {
   width: 80%;
   height: 35px;
 }
 .formContainerFaq {
-  @extend .formContainer;
+  @extend %formContainer;
   width: 80%;
   margin: 5% auto 0 auto;
 form {

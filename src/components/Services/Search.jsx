@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './services.scss';
+import styles from './styles/search.scss';
 import { filterType } from './../../types/index';
 
 const Search = props => (
-  <div className={styles.searchContainer}>
-    <form className={styles.searchBox} >
+  <div className={styles['search-container']}>
+    <form className={styles['search-box']} >
       <input
         type="text"
         name="search"

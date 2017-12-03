@@ -5,21 +5,25 @@
 @import '../../../styles/keyframes';
 
 .outer-container {
-  background-color: lighten($base, 40%);
+  background-color: white;
   display: flex;
   flex-flow: row wrap;
   flex: 1 0 auto;
   padding: 5px;
-  width: 80%;
-  border: solid 1px $base;
+  width: 100%;
+  height: 40px;
   margin-bottom: 5px;
 }
-.category {
-  font-size: 1.2em;
+.cat-btn {
+  @include reset-button(1.2em);
+  color: $blue;
   font-weight: 500;
-  margin: 0;
-  padding: 0;
+  padding-bottom: 8px;
+  &:hover {
+    text-decoration:underline;
+  }
 }
+
 .tag {
   font-size: 1.2em;
   font-weight: 400;
@@ -39,29 +43,28 @@
 @media only screen
 and (max-width: 667px)
 and (orientation: portrait) {
+  // .outer-container {
+  //   height: 60px;
+  // }
 
-  .category,
+  .cat-btn,
   .tag {
     font-size: 1em;
   }
 
-  .breadcrumbs-container {
-    align-items: center;
-    display: flex;
-    flex: 1;
-    flex-flow: column nowrap;
-}
-
-  .breadcrumbs-trail-container {
-    align-items: flex-start;
-    display: flex;
-    flex: 1;
-    flex-flow: column nowrap;
-    font-size: 1em;
-  }
-
-  .outer-container {
-    width: 100%;
-  }
+//   .breadcrumbs-container {
+//     align-items: center;
+//     display: flex;
+//     flex: 1;
+//     flex-flow: column nowrap;
+// }
+//
+//   .breadcrumbs-trail-container {
+//     align-items: flex-start;
+//     display: flex;
+//     flex: 1;
+//     flex-flow: column nowrap;
+//     font-size: 1em;
+//   }
 
 }

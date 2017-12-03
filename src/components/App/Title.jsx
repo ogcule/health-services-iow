@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './App.scss';
+import styles from './styles/title.scss';
 import Nav from './../Nav/Nav';
 import island from './../../images/iow.png';
 

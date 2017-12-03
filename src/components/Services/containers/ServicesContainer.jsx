@@ -47,6 +47,8 @@ class ServicesContainer extends React.Component {
         image: '',
         tags: '',
       },
+      menuOverlay: false,
+      searchBox: true,
     };
     this.handleFormChange = this.handleFormChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -60,7 +62,10 @@ class ServicesContainer extends React.Component {
     this.handleSearchClick = this.handleSearchClick.bind(this);
     this.handleDisplayCategories = this.handleDisplayCategories.bind(this);
     this.handleTagMenu = this.handleTagMenu.bind(this);
+    this.handleMenuOverlayChange = this.handleMenuOverlayChange.bind(this);
+    this.handleSearchBoxChange = this.handleSearchBoxChange.bind(this);
   }
+
   getFilteredCategory(category, tags) {
     apiServices.requestGetCategory(category)
       .then((data) => {
@@ -94,6 +99,7 @@ class ServicesContainer extends React.Component {
               filteredView: true,
             },
           ),
+          searchBox: false,
         }));
       });
   }
@@ -113,6 +119,7 @@ class ServicesContainer extends React.Component {
               filteredView: true,
             },
           ),
+          searchBox: false,
         }));
       })
       .catch(err => console.log(err.message));
@@ -131,8 +138,27 @@ class ServicesContainer extends React.Component {
   handleMessageChange() {
     this.setState(prevState => ({ message: !prevState.message }));
   }
+  handleMenuOverlayChange() {
+    this.setState(prevState => ({ menuOverlay: !prevState.menuOverlay }));
+    console.log('MenuOverlay');
+  }
+  handleSearchBoxChange() {
+    this.setState(prevState => ({
+      filter: Object.assign(
+        {},
+        prevState.filter,
+        {
+          filteredView: false,
+          category: '',
+          tags: '',
+        },
+      ),
+      searchBox: true,
+    }));
+  }
   // handler to change the filtered view on and off
   handleFilterChange() {
+    console.log('filter Change before', this.state.filter.filteredView);
     this.setState(prevState => ({
       filter: Object.assign(
         {},
@@ -142,17 +168,22 @@ class ServicesContainer extends React.Component {
         },
       ),
     }));
+    console.log('Filter after change call: ', this.state.filter.filteredView);
   }
   /* handler for calling a get request for all services by category
   when a click event occurs */
   handleFilterClick(e) {
     e.preventDefault();
+    console.log('filter click');
     const { target } = e;
     const category = target.getAttribute('data-category');
-    this.getFilteredCategory(category, this.state.filter.tags);
-    if (!this.state.filter.category) {
-      this.handleFilterChange();
-    }
+    /* Pass in empty string parameter to reset tags. when
+    category is selected. */
+    this.getFilteredCategory(category, '');
+    this.handleFilterChange();
+    this.setState({
+      searchBox: false,
+    });
   }
   handleSearchClick(e) {
     e.preventDefault();
@@ -170,6 +201,8 @@ class ServicesContainer extends React.Component {
                 filteredView: true,
               },
             ),
+            menuOverlay: false,
+            searchBox: false,
           }));
         })
         .catch(err => console.log(err.message));
@@ -381,10 +414,12 @@ class ServicesContainer extends React.Component {
         handleInputChange={this.handleInputChange}
         handleFilterClick={this.handleFilterClick}
         handleFilterChange={this.handleFilterChange}
+        handleMenuOverlayChange={this.handleMenuOverlayChange}
         handleSubmitTags={this.handleSubmitTags}
         handleClearAll={this.handleClearAll}
         handleSearchClick={this.handleSearchClick}
         handleDisplayCategories={this.handleDisplayCategories}
+        handleSearchBoxChange={this.handleSearchBoxChange}
         handleTagMenu={this.handleTagMenu}
         message={this.state.message}
         handleSubmit={this.handleSubmit}
@@ -395,6 +430,8 @@ class ServicesContainer extends React.Component {
         filteredView={this.state.filteredView}
         displayCategories={this.state.displayCategories}
         tagMenu={this.state.tagMenu}
+        menuOverlay={this.state.menuOverlay}
+        searchBox={this.state.searchBox}
       />
     );
   }

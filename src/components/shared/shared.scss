@@ -2,7 +2,10 @@
 @import "../../styles/fonts";
 @import "../../styles/buttons";
 .addBtn{
+  flex: 4;
+  padding-right: 5px;
     button{
+      float: right;
     @include reset-button(1.5em);
     height: 24px;
     width: 24px;
